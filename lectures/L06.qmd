@@ -1,0 +1,55 @@
+# SSMs {.unnumbered}
+
+## Materials:
+
+Date: Thursday, 12-December-2024, 1.30pm, IST.
+
+### Pre-work:
+
+-   Refresh ML foundations.
+-   Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
+-   [FFNs](./L01.qmd)
+-   [CNNs](./L02.qmd)
+-   [KNNs](./L03.qmd)
+-   [RNNs](./L03.qmd)
+-   [Transformers](./L04.qmd)
+
+### In-Class
+
+- [slides](https://rosanneliu.com/dlctfs/dlct_220114.pdf) Efficiently Modeling Long Sequences with Structured State Spaces by [Albert Gu](https://goombalab.github.io/)
+- [slides](https://www.cs.ubc.ca/labs/lci/mlrg/slides/MLRGSummer2024.alan.pdf) by [Alan Milligan](https://www.cs.ubc.ca/~alanmil/), UBC MLRG Summer 2024
+- The Annotated S4 [blog](https://srush.github.io/annotated-s4/) \| [slides](https://srush.github.io/annotated-s4/slides.html#1) Generating Extremely Long Sequences in JAX, by Sasha Rush and Sidd Karamcheti \| [talk](https://www.youtube.com/watch?v=GqwhkbrWDOI)
+- [blog](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train) Introduction to State Space Models by Loick Bourdois
+- [blog](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mamba-and-state) - a Visual Guide to Mamba and State Space Models
+- Chapter 7 of Aaraon R. Voelker's [Thesis](https://uwspace.uwaterloo.ca/items/93e6f962-81cb-4606-b0c2-40ab113da4e3)
+
+### Lab
+
+-   [Mamba-Minimal](https://github.com/johnma2006/mamba-minimal) walk through, a minimal implementation of Mamba
+
+### Post-class:
+
+- Albert Gu's blogs on S4 [Part-1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [Part-2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2) and [Part-3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3)
+- [#46 MLSys @ Stanford](https://www.youtube.com/watch?v=EvQ3ncuriCM) Talk by Albert Gu
+- The Annotated S4 [blog](https://srush.github.io/annotated-s4/) \| [code](https://github.com/srush/annotated-s4/) Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention, Angelos Katharopoulos, Apoorv Vyas, Nikolaos Pappas, François Fleuret
+- [paper](https://arxiv.org/abs/2006.16236)
+- [code](https://github.com/state-spaces/s4) - Official implementation of S4
+- [code](https://github.com/alxndrTL/mamba.py) another minimal implementation of Mamba
+- [blog](https://huggingface.co/blog/lbourdois/ssm-2022) History of SSMs in 2022
+- [blog](https://jameschen.io/jekyll/update/2024/02/12/mamba.html) A Mamba No. 5, with explanations of hardware accelerations
+- [youtube](https://www.youtube.com/watch?v=ouF-H35atOY) a great explanation of Mamba
+
+
+### Additional References
+- [LMU](https://proceedings.neurips.cc/paper_files/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) Legendre Memory Units: Continuous-Time
+Representation in Recurrent Neural Networks, Aaraon R. Voelker et al, NeurIPS 2019.
+- [Thesis](https://uwspace.uwaterloo.ca/items/93e6f962-81cb-4606-b0c2-40ab113da4e3) Dynamical Systems in Spiking Neuromorphic Hardware. Chapter 7 on Delay Networks is very useful to understand how the HiPPo matrix gets derived. 
+- [paper](https://arxiv.org/abs/2111.00396) Efficiently Modeling Long Sequences with Structured State Spaces, Albert Gu, Karan Goel, Christopher Ré, 2021
+- [paper](https://arxiv.org/abs/2110.13985) Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers, Albert Gu, Isys Johnson, Karan Goel, Khaled Saab, Tri Dao, Atri Rudra, Christopher Ré, 2022
+- [paper]() 
+- [paper](https://arxiv.org/abs/2206.12037) How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections, Albert Gu, Isys Johnson, Aman Timalsina, Atri Rudra, Christopher Ré
+- [paper](https://arxiv.org/abs/2203.14343) Diagonal State Spaces are as Effective as Structured State Spaces, Ankit Gupta, Albert Gu, Jonathan Berant
+- [paper](https://arxiv.org/abs/2206.11893) On the Parameterization and Initialization of Diagonal State Space Models, Albert Gu, Ankit Gupta, Karan Goel, Christopher Ré 
+- [paper](https://arxiv.org/abs/2210.06583) S4ND: Modeling Images and Videos as Multidimensional Signals Using State Spaces, Eric Nguyen, Karan Goel, Albert Gu, Gordon W. Downs, Preey Shah, Tri Dao, Stephen A. Baccus, Christopher Ré
+- [paper](https://arxiv.org/abs/2405.21060) Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality, Tri Dao, Albert Gu
+- [paper](https://arxiv.org/abs/2311.06281) Efficient Parallelization of a Ubiquitous Sequential Computation, Franz A. Heinsen | [code](https://github.com/johnryan465/pscan)

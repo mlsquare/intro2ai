@@ -1,0 +1,54 @@
+# RNNs {.unnumbered}
+
+## Materials:
+
+Date: Saturday, 12-October-2024, 1.30pm, IST.
+
+### Pre-work:
+
+-   Refresh ML foundations.
+-   Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
+-   [FFNs](./L01.qmd)
+-   [CNNs](./L02.qmd)
+-   [KNNs](./L03.qmd)
+
+### In-Class
+
+-   [Chapter 9](https://d2l.ai/chapter_recurrent-neural-networks/index.html) from on RNNs from d2l.
+-   Sebastian Raschka's lecture on RNNs [pdf](https://sebastianraschka.com/pdf/lecture-notes/stat453ss21/L15_intro-rnn__slides.pdf)
+-   [Understanding LSTMs](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) Chris Cola's Blog
+-   [Lecture 14](https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture14.pdf) on RNNs from from Mitesh Khapra's [CS7015](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html)
+-   [Lecture 15](https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture15.pdf) on GRUs, LSTMs, from Mitesh Khapra's [CS7015](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html)
+
+### Lab
+
+-   Sebastican Raschka's tuotrial [blog](https://sebastianraschka.com/blog/2021/dl-course.html#l15-introduction-to-recurrent-neural-networks), RNN Classifier on IMDB [notebook](https://github.com/rasbt/stat453-deep-learning-ss21/blob/main/L15/1_lstm.ipynb)
+-   [Sentiment Analysis](https://github.com/bentrevett/pytorch-sentiment-analysis), with [RNNs](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/main/2%20-%20Recurrent%20Neural%20Networks.ipynb)
+-   [micrograd](https://github.com/karpathy/micrograd) a no dependency, tiny backprop, with a PyTorch like API, from the legendary Andreaj Karpathy
+-   [BoolGrad](https://github.com/mlsquare/boolgrad) backprop on Boolean Computational Graph, based on micrograd.
+
+### Post-class:
+
+-   [GRU Analysis](https://www.youtube.com/watch?v=0oaSSenz_kg)
+-   [Blog](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) - The unreasonable effectiveness of RNNs by Anreaj Karpathy
+
+### RNN Papers and Advancements
+
+-   [Transformers are Multi-state RNNs](https://arxiv.org/abs/2401.06104)
+-   [Were RNNs All We Needed?](https://arxiv.org/abs/2410.01201)
+-   [xLSTM: Extended Long Short-Term Memory](https://arxiv.org/abs/2405.04517)
+-   [Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/abs/2006.16236)
+
+### Theory
+
+-   tbd
+-   tbd
+
+### Additional References
+
+-   Saebastian Raschk's course, [youtube playlist](https://youtube.com/playlist?list=PLTKMiZHVd_2KJtIXOW0zFhFfBaJJilH51&si=fMA1c-lNpbOENP0b), [Book](https://github.com/rasbt/python-machine-learning-book-3rd-edition)
+-   tbd
+
+## Notes
+
+tbd

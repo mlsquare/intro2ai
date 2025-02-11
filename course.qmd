@@ -1,0 +1,43 @@
+---
+title: "Course"
+---
+
+You will find below material and schedule for _Deep Learning: A Mathematical Introduction_ being discussed at [TIFR-CAM](https://www.math.tifrbng.res.in/), Bangalore, in the Fall of 2024. This will evolve as the discussion progress.
+
+
+### Syllabus & Schedule
+
+::: {style="font-size: 80%;"}
+| Wk | Dt | Topics | Resources |
+| :- | :- | :------- | :------- |
+| 01 | 07-Sep | 1. Course Intro <br> 2. FFNs | [L01](./lectures/L01.qmd) |
+| 02 | tbd | 1. CNNs Intro <br> 2. Lab <br> 3. Architectures | [L02](./lectures/L02.qmd) |
+| 02 | 21-Sep | 1. KAN (with Splines) <br> 2. Nonparametric Regression <br> 2. KAN Variants | [L03](./lectures/L03.qmd) |
+: Part-1: Deep Learning Models {.striped}
+:::
+
+
+
+
+## References
+1. \[course\] [CS6910](http://www.cse.iitm.ac.in/~miteshk/CS6910.html), Prof. Mitesh Khapra’s CS6910 Deep Learning at IIT-M
+2. \[course\] [CS236](https://deepgenerativemodels.github.io/) Prof. Stefano Emron’s course on Deep Generative Modeling at Stanford Fall’23
+3. \[Book\] [Deep Generative Modeling](https://jmtomczak.github.io/dgm_book.html), Jakub Tomxzak
+4. \[Book\] [Understanding Deep Learning](https://udlbook.github.io/udlbook/), Simon Prince
+5. \[Book\] [Deep Learning](https://www.deeplearningbook.org/), Ian Goodfellow and Yoshua Bengio and Aaron Courville
+
+### References
+- R01: [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Prof. [Mitesh Khapra](https://www.cse.iitm.ac.in/~miteshk/) @ IIT Madras
+- R02:  [CS7015: Deep Learning](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html) Prof. [Mitesh Khapra](https://www.cse.iitm.ac.in/~miteshk/) @ IIT Madras(earlier version of CS6910)
+- R03: [LING 574: Deep Learning for NLP](https://www.shane.st/teaching/574/spr24/) Prof. [Shane Steinert-Threlkeld](https://www.shane.st/) @ University of Washington
+- R04: [Dive into Deep Learning](https://d2l.ai/index.html) [Alex Smola](https://alex.smola.org/) et al
+- R05: [Understanding Deep Learning](https://udlbook.github.io/udlbook/) Prof. [Simon Prince](https://www.bath.ac.uk/person/1545883)
+- R06: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/) Michael Nielsen
+- R07: [Deep Learning for Computer Vision](https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/) NPTEL course by Prof. [Vineeth N Balasubramanian](https://people.iith.ac.in/vineethnb/)
+- R08: [CS236](https://deepgenerativemodels.github.io/) Prof. Stefano Emron’s course on Deep Generative Modeling at Stanford Fall’23
+- R09: [Deep Generative Modeling](https://jmtomczak.github.io/dgm_book.html), Jakub Tomxzak
+- R10 [Deep Learning](https://www.deeplearningbook.org/), Ian Goodfellow and Yoshua Bengio and Aaron Courville
+
+
+[Soma S Dhavala](https://www.linkedin.com/in/somasdhavala/) \
+Discussion Anchor

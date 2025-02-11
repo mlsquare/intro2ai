@@ -1,0 +1,55 @@
+# Transformers {.unnumbered}
+
+## Materials:
+
+Date: Saturday, 16-November-2024, 1.30pm, IST.
+
+### Pre-work:
+
+-   Refresh ML foundations.
+-   Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
+-   [FFNs](./L01.qmd)
+-   [CNNs](./L02.qmd)
+-   [KNNs](./L03.qmd)
+-   [RNNs](./L03.qmd)
+
+### In-Class
+
+- [LLMs @ UPenn](https://llm-class.github.io/schedule.html) [Part-1](https://llm-class.github.io/slides/Lecture%205%20-%20The%20Transformer%20Architecture%20-%20Part%20I.pdf), [Part-2](https://llm-class.github.io/slides/Lecture%206%20-%20The%20Transformer%20Architecture%20-%20Part%20II.pdf)
+- [LLMs: Introduction and Recent Advances @ IIT Delhi](https://lcs2-iitd.github.io/ELL881-AIL821-2401/) Module-5 on RNNs, Module-6 on Attention and Transformers
+
+### Lab
+
+- [code](https://github.com/rasbt/LLMs-from-scratch/blob/main/ch03/01_main-chapter-code/ch03.ipynb) Attention Mechanism 
+- [code](https://github.com/rasbt/LLMs-from-scratch/blob/main/ch04/01_main-chapter-code/ch04.ipynb) GPT2-like model from scratch
+
+
+### Post-class:
+
+- [Attention Is All You Need](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)
+- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+- [Transformer Explainer](https://poloclub.github.io/transformer-explainer/)
+- [RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/pdf/2104.09864)
+- [Layer Normalization](https://arxiv.org/pdf/1607.06450)
+- [Build Better Deep Learning Models with Batch and Layer Normalization](https://www.pinecone.io/learn/batch-layer-normalization/)
+
+### Transformer Papers and Advancements
+
+-   [Transformers are Multi-state RNNs](https://arxiv.org/abs/2401.06104)
+-   [Were RNNs All We Needed?](https://arxiv.org/abs/2410.01201)
+-   [xLSTM: Extended Long Short-Term Memory](https://arxiv.org/abs/2405.04517)
+-   [Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/abs/2006.16236)
+
+### Theory
+
+-   tbd
+-   tbd
+
+### Additional References
+
+-   Saebastian raschka's course, [youtube playlist](https://youtube.com/playlist?list=PLTKMiZHVd_2KJtIXOW0zFhFfBaJJilH51&si=fMA1c-lNpbOENP0b), [Book](https://github.com/rasbt/python-machine-learning-book-3rd-edition)
+-   tbd
+
+## Notes
+
+tbd

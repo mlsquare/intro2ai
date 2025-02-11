@@ -1,0 +1,64 @@
+project:
+  type: book
+  output-dir: docs
+
+navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Preface"
+        href: preface.qmd
+book:
+  title: "Deep Learning"
+  subtitle: "A Mathematical Introduction"
+  reader-mode: true
+
+  page-footer:
+    left: |
+      course under prep.
+    right: |
+      This course material was built with <a href="https://quarto.org/">Quarto</a> with <a href="https://github.com/hadley/r4ds">r4ds</a> theme.
+  
+  cover-image: logo.jpg
+  favicon: logo.jpg
+  site-url: https://mlsquare.github.io/intro2dl
+  repo-url: https://github.com/mlsquare/intro2dl
+  repo-branch: main
+  repo-actions: [edit, issue]
+  
+  chapters:
+  - preface.qmd
+  - index.qmd
+  - course.qmd        
+  - part: Lectures
+    chapters:
+    - ./lectures/L01.qmd
+    - ./lectures/L02.qmd
+    - ./lectures/L03.qmd
+    - ./lectures/L04.qmd
+    - ./lectures/L05.qmd
+    - ./lectures/L06.qmd
+  - part: Lab
+    chapters:
+    - ./notebooks/00-01-FFN-Classification-Iris.ipynb
+    - ./notebooks/00-02-FFN-Regression-Friedman2.ipynb
+    - ./notebooks/02-01-KAN-Intro.ipynb
+    - ./notebooks/02-02-KAN-Splines.ipynb
+    - ./notebooks/02-03-KAN-RBFs.ipynb
+    - ./notebooks/02-04-KAN-Chebyshev.ipynb
+    - ./notebooks/02-05-KAN-Wavelets.ipynb
+    - ./notebooks/02-07-KAN-PDE.ipynb
+  
+  
+format:
+  html:
+    theme:
+    - pulse
+    - mlops.scss
+    code-link: true
+    author-meta: "mlsquare"
+    callout-appearance: simple
+    number-sections: false
+editor: visual

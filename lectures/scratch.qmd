@@ -1,0 +1,43 @@
+---
+title: "Untitled"
+format: html
+---
+
+Let us consider boolean variables and just two inputs $x_1, x_2 \in \{0,1\}$. We will model the popular logic gates using a simple perceptron: $y = \sigma\left(x_1 w_1 + x_2 w_2 + b\right)$
+
+| gate| $w_1$ | $w_2$ | b |
+|-----|-----|-----|-----|
+AND| 20 | 20 | -30 |
+OR| 20 | 20 | -10 |
+NAND| -20 | -20 | 30 |
+NOR| -20 | -20 | 10 |
+
+For example, the Truth Table for AND, and perceptron output is given below:
+
+| $x_1$ | $x_2$ | $y_{AND}$ | $\hat{y}_{AND}  |
+|-----|-----|-----|-----|
+0| 0 | 0 | $\sigma(-30)\approx 0$ |
+0| 1 | 0 | $\sigma(-10)\approx 0$ |
+1| 0 | 0 | $\sigma(-10)\approx 0$ |
+1| 1 | 1 | $\sigma(10)\approx 1$ |
+
+Other gates like OR, NAND, and NOR can also be verified. The NAND gate is called a universal gate (so does NOR) because, given enough number of NAND gates, any truth table can be relaized with just NAND gates. For example, NOT gate can be relaized by setting one of the inputs to logic 1 to get the complement of the other input. Note that XOR can not be modled by a perceptron. Can you guess why?
+
+Now we will generalize the above for M-ary AND gate to begin with. The N-ary AND gate version can be realized by:
+$$
+\begin{array}{left}
+\hat{y}_{AND} = \sigma\left( \sum_{m=1}^{M}x_i w_i + b \right) \text{ with }   w_i = 20, b = -20M + 10
+\end{array}
+$$
+Similarly,
+$$
+\begin{array}{left}
+\hat{y}_{NAND} = \sigma\left( \sum_{m=1}^{M}x_i w_i + b \right) \text{ with }   w_i = -20, b = 20M - 10
+\end{array}
+$$
+Now consider M-ary input and any Truth Table. There will be $2^M$ different possible input states (rows) and the Truth Value for each row can be 0 or 1. The Sum-of-Products (SOP) to realize the Truth Table is as follows:
+$$
+\begin{array}{left}
+\hat{y}_{NAND} = \Sum_{i \in \{ i' \text{ s.t } y_{i'} = 1 \}
+\end{array}
+$$
