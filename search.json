@@ -1,0 +1,194 @@
+[
+  {
+    "objectID": "notebooks/01-01-Reg-LM-Sim.html",
+    "href": "notebooks/01-01-Reg-LM-Sim.html",
+    "title": "Regression",
+    "section": "",
+    "text": "Generate Data\nHere, we will generate a data with known function, i.e., we will simulate data. The new term for this is Generative AI :). The advantage is, we exactly know the model. So, we will know if our understanding is correct.\nSimulation is a very powerful technique when we are developing new theory or implementing a known theory. The ground truth is known, so we check our understaning, can debug if things do not go as expected.\nHere, we will consider the following model.\n\\[\ny = -1 + 2x_1 + 3x_3\n\\]",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Regression</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to AI",
+    "section": "",
+    "text": "Welcome\nDear Students and Learners,\nSee the course page for recent information on Lectures, Labs, Resources etc..",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#announcements",
+    "href": "index.html#announcements",
+    "title": "Introduction to AI",
+    "section": "Announcements",
+    "text": "Announcements\n\n[11-Feb-2025] Course website up",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Introduction to AI",
+    "section": "Overview",
+    "text": "Overview\nPrereqs\n\nAbility to read Python code\nBasic exposure to calculus\n\nWe will take a case-based approach to learning the following topics\nPart-1: Supervised Learning\n\nLinear Regression\nLogistic Regression\nk Nearest Neighbors (Regression and Classification)\n\nDecision Trees\nRandom Foresting (Bagging)\nGradient Boosting Trees (Boosting)\n\nPart-2: Unsupervised Learning\n\nClustering\n\nK-Means\n\nDimensionality Regression\n\nPCA\n\n\nPart-3: Semisupervised Learning\n\nClustering\n\nK-Means\n\nDimensionality Regression\n\nPCA\n\n\nPart-4: Reinforcement Learning\n\nSetup\n\nQ-Learning",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "preface.html",
+    "href": "preface.html",
+    "title": "Preface",
+    "section": "",
+    "text": "This course is a light introduction to AI/ML with no major background. It is to gain intuition, and understand the process, and delve deeper later.\n\nDisclaimer\nThis course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it.\nopenly,\nThe Saddle Point",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "course.html",
+    "href": "course.html",
+    "title": "Course",
+    "section": "",
+    "text": "Syllabus & Schedule",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course</span>"
+    ]
+  },
+  {
+    "objectID": "course.html#datasets",
+    "href": "course.html#datasets",
+    "title": "Course",
+    "section": "Datasets",
+    "text": "Datasets\n\nsklearn: Browse the datasets - quite useful to study different algorithms.\nUCI ML Repository: Browse datasets or programmatically access the datasets with ucimlrepo\nOpenML: Browse datasets or programmatically access the datasets with openML-Python. OpenML lets you do many things like running models, submitting them, and hosting them as well - besides providing a nice way to interact with datasets.\nHuggingFace: One of the significant and most impactful things that have happened to advancing AI is HuggingFace. Browse datasets or install for programmatic access\nKaggle: Browse datasets. There are many interesting categories like Biology, Sports, Investing, Social Networks, etc.\n\n\nReferences\n\nAn Introduction to Statistical Learning. This repo contains the datasets and notebooks to reproduce the figures and complete the Labs in the textbook (the Python version).\nGrokking Machine Learning from Luis Serrano. His youtube channel Serrano.Academy is loaded with amazing lectures.\nML Engineering, Andiry Burkov, 2019, LeanPub\n\nAdvanced\n\nElements of Statistical Learning. This repo contains the datasets and notebooks to reproduce the figures and complete the Labs in the textbook. This book is the big brother of the An Introduction to Statistical Learning.\nDive into Deep Learning Alex Smola et al\nUnderstanding Deep Learning Prof. Simon Prince\n\nSoma S Dhavala\nDiscussion Anchor",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course</span>"
+    ]
+  },
+  {
+    "objectID": "lectures/L00.html",
+    "href": "lectures/L00.html",
+    "title": "ML Workflow",
+    "section": "",
+    "text": "Pre-work:",
+    "crumbs": [
+      "Lectures",
+      "ML Workflow"
+    ]
+  },
+  {
+    "objectID": "lectures/L00.html#pre-work",
+    "href": "lectures/L00.html#pre-work",
+    "title": "ML Workflow",
+    "section": "",
+    "text": "What is ML. Watch this youtube from Luis Serrano",
+    "crumbs": [
+      "Lectures",
+      "ML Workflow"
+    ]
+  },
+  {
+    "objectID": "lectures/L00.html#notes",
+    "href": "lectures/L00.html#notes",
+    "title": "ML Workflow",
+    "section": "Notes",
+    "text": "Notes\nBelow outlined is a typical workflow to solve an ML problem (in a supervised setting) given the data and problem are already defined, that a Data Scientist solves. This is certainly a limited view of solving a business problem - where multiple skills are needed and framing a business problem as an ML problem and making the data available are challenges by themselves. Getting data, and building a model is only a part of the overall solution. Here we assume that Data Scientist is already given the problem and data on a platter.\n\nProfile raw data: This is often referred to as EDA (Exploratory Data Analysis). In this step, one wants to see if the data is useable, are there any issues with the data, does it need be cleaned, is there some signal in it w.r.t to the problem etc. Sometimes, EDA will help decide what problem to work on.\nFrame the problem: Identify the type of the problem and what type of technique is suitable.\nPrepare dataset: Identify what is the prediction variable, what will be the features, and what type of cleaning is necessary.\nIdentify the evaluation criteria: Define suitable metrics to evaluate the solution (model) and set aside some dataset to test.\nBuild a baseline model: It is like a good default.\nAssess the model fit: Perform model assessment and run diagnostics to see the health of model at the instance level and at the dataset level.\nIterate: Go through any of the steps above to redefine or improve the models.\n\nIf the solution is satisfactory, discuss the solution with ML Engineers and Product Owners on piloting and scaling.\nOften, in introductory courses on AI/ML Step 4 on building a model is given the attention (to introduce those models) but this is a partial view. For an overview of what all is needed to build ML solutions and to be valuable to organizations, read this article on MLOps.",
+    "crumbs": [
+      "Lectures",
+      "ML Workflow"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html",
+    "href": "lectures/L01.html",
+    "title": "Linear Regression",
+    "section": "",
+    "text": "Pre-work:",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#pre-work",
+    "href": "lectures/L01.html#pre-work",
+    "title": "Linear Regression",
+    "section": "",
+    "text": "What is ML youtube from Luis Serrano\nWorkflow of an Model development",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#in-class",
+    "href": "lectures/L01.html#in-class",
+    "title": "Linear Regression",
+    "section": "In-Class",
+    "text": "In-Class\n\nChapter 03 on Linear Regression from An Introduction to Statistical Learning",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#lab",
+    "href": "lectures/L01.html#lab",
+    "title": "Linear Regression",
+    "section": "Lab",
+    "text": "Lab\n\nClassification on Iris data",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#post-class",
+    "href": "lectures/L01.html#post-class",
+    "title": "Linear Regression",
+    "section": "Post-class:",
+    "text": "Post-class:\n\nHands-on: notebook on implementing a Linear Regression from ground-up, including implementing gradient descent to fit (train) the model.\nHands-on: notebook on House Price Prediction",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#notes",
+    "href": "lectures/L01.html#notes",
+    "title": "Linear Regression",
+    "section": "Notes",
+    "text": "Notes\n\nLinear Model\nConsider the following regression problem \\[y^{[i]} \\equiv f(x^{[i]}) + e^{[i]} \\equiv \\phi(x^{[i]}) + e^{[i]}, i \\in \\left\\{1,\\dots,N\\right\\}\\] with \\(D = \\{x^{[i]}, y^{[i]}\\}_{i=1}^{N}\\) representing all the data available to fit (train) the model \\(f(x)\\). Suppose that \\(x_1, x_2, x_3, \\dots, x_{n_0}\\) are the \\({n_0}\\) features available to fit the model. If we choose \\(f(.)\\) to be a linear combination of the features, it leads us to the familiar Linear Model (or Linear Regression). In matrix notation, the regression problem is: \\[\n\\begin{array}{left}\n{\\bf y} = {\\bf X}{\\bf \\beta} + {\\bf \\epsilon}\n\\end{array}\n\\] where \\[\n\\begin{array}{left}\n{\\bf X}_{N \\times {({n_0}+1)}} &=&\n\\begin{pmatrix} 1 &  x_1^{[1]} & \\dots & x_{n_0}^{[1]} \\\\\n1 & x_1^{[2]} & \\dots & x_{n_0}^{[2]} \\\\\n\\vdots & & & \\vdots \\\\\n1 & x_1^{[N]} & \\dots & x_{n_0}^{[N]}\n\\end{pmatrix} \\\\\n{\\bf \\beta}_{{({n_0}+1)} \\times 1} &=& [\\beta_1, \\beta_2, \\dots, \\beta_{({n_0}+1)} ]^T \\\\\n{\\bf y}_{N \\times 1} &=& [y^{[1]}, y^{[2]}, \\dots, y^{[N]} ]^T \\\\\n\\end{array}\n\\] This is the classic Linear Regression setup. To recast this in a familiar Deep Learning notation, we rewrite the above as: \\[\n\\begin{array}{left}\n{\\bf y} = {\\bf X}{\\bf w} + {\\bf  b} + {\\bf \\epsilon}\n\\end{array}\n\\] where \\({\\bf  b}\\) represents the \\({n_0} \\times 1\\) bias (or intercept) term, \\({\\bf w}\\) is the weight matrix (regression coefficients) and \\({\\bf X}\\) is the set of all \\(N \\times (n_0+1)\\) features excluding the column of ones (which was included to model the intercept/ bias term).\nThe prediction \\({\\bf \\hat{y}}\\) is typically the conditional expectation \\({\\bf \\hat{y}| {\\bf X} } = {\\bf X}{\\bf w} + {\\bf  b}\\) under the zero-mean error model for \\({\\bf \\epsilon}\\), obtained by minimizing the MSE between the observed and the predicted. This is essentially a Perceptron with linear activation function, which is typically used to solve regression problems. What about binary classification (or more generally, categorical responses)?",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#advanced",
+    "href": "lectures/L01.html#advanced",
+    "title": "Linear Regression",
+    "section": "Advanced",
+    "text": "Advanced",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#references",
+    "href": "lectures/L01.html#references",
+    "title": "Linear Regression",
+    "section": "References",
+    "text": "References",
+    "crumbs": [
+      "Lectures",
+      "Linear Regression"
+    ]
+  }
+]
