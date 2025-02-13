@@ -1,0 +1,24 @@
+# ML Workflow {.unnumbered}
+
+
+## Pre-work:
+
+- What is ML. Watch this [youtube](https://youtu.be/IpGxLWOIZy4?si=SoLiRV7dX1gGJIPu) from Luis Serrano
+
+## Notes
+
+Below outlined is a typical workflow to solve an ML problem (in a supervised setting) given the data and problem are already defined, that a Data Scientist solves. This is certainly a limited view of solving a business problem -  where multiple skills are needed and framing a business problem as an ML problem and making the data available are challenges by themselves. Getting data, and building a model is only a part of the overall solution.  Here we assume that Data Scientist is already given the problem and data on a platter.
+
+1. **Profile raw data**: This is often referred to as EDA (Exploratory Data Analysis). In this step, one wants to see if the data is useable, are there any issues with the data, does it need be cleaned, is there some signal in it w.r.t to the problem etc. Sometimes, EDA will help decide what problem to work on.
+2. **Frame the problem**: Identify the type of the problem and what type of technique is suitable. 
+3. **Prepare dataset**: Identify what is the prediction variable, what will be the features, and what type of cleaning is necessary.
+4. **Identify the evaluation criteria**:  Define suitable metrics to evaluate the solution (model) and set aside some dataset to test.
+4. **Build a baseline model**: It is like a good default.
+5. **Assess the model fit**: Perform model assessment and run diagnostics to see the health of model at the instance level and at the dataset level.
+6. **Iterate**: Go through any of the steps above to redefine or improve the models.
+
+
+If the solution is satisfactory, discuss the solution with ML Engineers and Product Owners on piloting and scaling.
+
+Often, in introductory courses on AI/ML Step 4 on building a model is given the attention (to introduce those models) but this is a partial view. For an overview of what all is needed to build ML solutions and to be valuable to organizations, read [this](https://mlsquare.github.io/ai-839/preface.html) article on MLOps.
+ 

@@ -1,47 +1,46 @@
 # Welcome {.unnumbered}
 
-Dear Faculty, Students and Learners
+Dear Students and Learners,
 
-See the [course](./course.qmd) page for recent information on Lectures, Labs, Resources etc.. 
+See the [course](./course.qmd) page for recent information on Lectures, Labs, Resources etc..
 
 ## Announcements
-- [22-Sep-2024] Notes added to [L03](./lectures/L03.qmd).
-- [21-Sep-2024] [L02](./lectures/L02.qmd), [L03](./lectures/L03.qmd) added.
-- [07-Sep-2024] [L01](./lectures/L01.qmd) added.
-- [21-Aug-2024] Course website up
+
+-   \[11-Feb-2025\] Course website up
 
 ## Overview
 
 **Prereqs**
 
-- Undergraduate level exposure to Linear Algebra, Calculus
-- Ability to read Python code
-- Basic exposure to ML/DL
+-   Ability to read Python code
+-   Basic exposure to calculus
 
+We will take a case-based approach to learning the following topics
 
-**Part-1: A Mathematical Introduction to Deep Learning Models**
+**Part-1: Supervised Learning**
 
-- Topics
-    - Feed Forward Neural Networks (FFNs)
-    - Convolution Neural Networks (CNNs)
-    - Kolmogorov-Arnold Networks (KANs)
-    - Recurrent Neural Networks (RNNs)
-    - Transformers
-    - Graph Neural Networks (GNNs)
-    - Selective Structured State Space Models (S4)
+-   Linear Regression
+-   Logistic Regression
+-   k Nearest Neighbors (Regression and Classification)   
+-   Decision Trees
+-   Random Foresting (Bagging)
+-   Gradient Boosting Trees (Boosting)
 
-**Part-2: A Mathematical Introduction to Deep Generative Models**
+**Part-2: Unsupervised Learning**
 
-- Topics
-    - Variational Auto Encoders (VAEs)
-    - Generative Adversarial Networks (GANs)
-    - Flow Networks
-    - Diffusion Models
+-   Clustering
+    - K-Means
+-   Dimensionality Regression
+    - PCA
 
-# Support
+**Part-3: Semisupervised Learning**
 
-<p style="color:blue">
-If you like the content, please share with others. Also, consider [donating](https://razorpay.me/@mlsquareorg?amount=CVDUr6Uxp2FOGZGwAHntNg%3D%3D) that costs less than a coffee.
-</p>
+-   Clustering
+    - K-Means
+-   Dimensionality Regression
+    - PCA
 
+**Part-4: Reinforcement Learning**
 
+-   Setup
+    - Q-Learning

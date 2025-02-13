@@ -1,15 +1,9 @@
 # Preface {.unnumbered}
 
-When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them. 
-The key modeling details are presented in textual form with accompanied by architecture (block) diagrams. If the paper had any Math in them it was for proofs but not for explaining the models or the expressions were restricted to highlighting key contributions (eg. loss function).
-
-Despite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my formal training Statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming that folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same reason - there is no precision.
-
-In this course, we will discuss different architectures (models) in Deep Learning using Mathematical language as much as possible (for the sake of precision) and follow-them up with implementation in code.
-
-The intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into "why" deep learning works or their applications. In the resources section, I will provide ample references for those interested that wants to explore further.
+This course is a light introduction to AI/ML with no _major_ background. It is to gain intuition, and understand the process, and delve deeper later.
 
 ### Disclaimer
+
 This course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it. 
 
 
