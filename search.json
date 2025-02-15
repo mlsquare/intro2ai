@@ -2,12 +2,177 @@
   {
     "objectID": "notebooks/01-01-Reg-LM-Sim.html",
     "href": "notebooks/01-01-Reg-LM-Sim.html",
-    "title": "Regression",
+    "title": "Linear Regression:01",
     "section": "",
-    "text": "Generate Data\nHere, we will generate a data with known function, i.e., we will simulate data. The new term for this is Generative AI :). The advantage is, we exactly know the model. So, we will know if our understanding is correct.\nSimulation is a very powerful technique when we are developing new theory or implementing a known theory. The ground truth is known, so we check our understaning, can debug if things do not go as expected.\nHere, we will consider the following model.\n\\[\ny = -1 + 2x_1 + 3x_3\n\\]",
+    "text": "Generate Data\nHere, we will generate a data with a known function, i.e., we will simulate data. The new term for this is Generative AI :). The advantage is, we exactly know the model. So, we will know if our understanding is correct.\nSimulation is a very powerful technique when we are developing new theory or implementing a known theory. The ground truth is known, so we check our understanding, can debug if things do not go as expected.\nHere, we will consider the following model.\n\\[\ny = -1 + 2x_1 \\\\\nx_1 \\sim U(-1,1)\n\\]\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nn = 100\nx = 2*(np.random.random(n))-1\nb0 = -1\nb1 = 2\ny = b0 + b1*x\nnoise = np.random.normal(0,0.5,n)\ny = y + noise \nplt.scatter(x,y)",
     "crumbs": [
       "Lab",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Regression</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linear Regression:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/01-01-Reg-LM-Sim.html#fit-train-let-us-fit-model-using-sklearns-apis",
+    "href": "notebooks/01-01-Reg-LM-Sim.html#fit-train-let-us-fit-model-using-sklearns-apis",
+    "title": "Linear Regression:01",
+    "section": "Fit/ Train: Let us fit model using sklearn’s APIs",
+    "text": "Fit/ Train: Let us fit model using sklearn’s APIs\n\nfrom sklearn.linear_model import LinearRegression\n\n# Reshape x to be a 2D array with one column\nX = np.reshape(x, (n, 1))\n\n\n# Fit the linear regression model\nreg = LinearRegression()\nreg.fit(X, y)\n\n# Print the coefficients and the score\nprint('coefs', reg.coef_)\nprint('intercepts', reg.intercept_)\nprint('score', reg.score(X, y))\n\ncoefs [1.98992655]\nintercepts -0.9556999786482694\nscore 0.8181079845791537\n\n\n\n# Fit the linear regression model but w/o intercept\nmodel = LinearRegression(fit_intercept=False)\nmodel.fit(X, y)\n# Print the coefficients and the score\nprint('coefs', model.coef_)\nprint('intercepts', model.intercept_)\nprint('score', model.score(X, y))\n\ncoefs [2.06639893]\nintercepts 0.0\nscore 0.26761225800328803",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linear Regression:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/01-01-Reg-LM-Sim.html#diagnosis",
+    "href": "notebooks/01-01-Reg-LM-Sim.html#diagnosis",
+    "title": "Linear Regression:01",
+    "section": "Diagnosis",
+    "text": "Diagnosis\nAsses the model fit and observe how the errors are!\n\nyh_b0 = reg.predict(X)\nplt.scatter(x,y, label='Observations')\nplt.plot(x,yh_b0,linewidth=3, color=\"tab:red\", label='with intercept')\n\nyh = model.predict(X)\nplt.plot(x,yh,linewidth=3, color=\"tab:orange\",label='w/o intercept')\nplt.legend()",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linear Regression:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/01-01-Reg-LM-Sim.html#evaluation",
+    "href": "notebooks/01-01-Reg-LM-Sim.html#evaluation",
+    "title": "Linear Regression:01",
+    "section": "Evaluation",
+    "text": "Evaluation\nReport the model metrics\n\nfrom sklearn.metrics import mean_squared_error\n\nmse = mean_squared_error(y, yh)\nprint('mse w/o intercept', mse)\n\nmse = mean_squared_error(y, yh_b0)\nprint('mse with intercept', mse)\n\nmse w/o intercept 1.212484058759364\nmse with intercept 0.301126242927177\n\n\nNote:\nWe did not create train and test splits. Since it was a simulation, if we split create a test split, the model behavior will change much. In other words, the train and test will have identical distributions by design, with very high probability.\nHowever, when solving real world problems, where we are not sure about the data generative process, the hold out methods is essentials to test the generalization ability of the model , beyond the training data.",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linear Regression:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/01-01-Reg-LM-Sim.html#questions",
+    "href": "notebooks/01-01-Reg-LM-Sim.html#questions",
+    "title": "Linear Regression:01",
+    "section": "Questions",
+    "text": "Questions\n\nWill the MSE improve if I increase the data by 10 fold? In other words, will increasing the data size lead to model improvement?\nHow is MSE related to the noise variance?\nCan the MSE be lowered by adding more features?",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linear Regression:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/01-02-Reg-LM-Yield.html",
+    "href": "notebooks/01-02-Reg-LM-Yield.html",
+    "title": "# Linear Regression:02",
+    "section": "",
+    "text": "A notebook to apply an Logistic Regression to classify the flower species type, given some features of the flowers. We will use the the famous Iris dataset (which is now the equivalent of the hello world dataset in the Data Science World)\nBased on - Kaggle Notebook for Iris Classiifcation - PyTorch for Iris Dataset - Iris Classification\nLoad, Visualize, Summarise Data\nsklearn comes with Iris dataset. We will load it, and do some basic visualization. It is always a good idea to “look” at the data before (blindly) running any models.\n\nfrom sklearn.datasets import load_iris\niris = load_iris()\n\nimport matplotlib.pyplot as plt\n\n_, ax = plt.subplots(figsize=(5,5))\nscatter = ax.scatter(iris.data[:, 0], iris.data[:, 1], c=iris.target)\nax.set(xlabel=iris.feature_names[0], ylabel=iris.feature_names[1])\n_ = ax.legend(\n    scatter.legend_elements()[0], iris.target_names, loc=\"lower right\", title=\"Classes\"\n)\n\n\n\n\n\n\n\n\nWe see that, 1. there are four features, and it is a three class classification problem 2. Using two features (sepal length, and sepal width), it is clear that, a perceptron will not be able separate _versicolor from virginica (data is not linearly separable) class. 3. But setosa can be separated from the remaining two.\nLet us look at the basic descriptions of the data.\n\n\nprint('feature name',iris.feature_names)\nprint('features type of data',type(iris.data))\nprint('features shape',iris.data.shape)\nprint('feature name',iris.target_names)\nprint('target type of data',type(iris.target))\nprint('target shape',iris.target.shape)\n\nfeature name ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']\nfeatures type of data &lt;class 'numpy.ndarray'&gt;\nfeatures shape (150, 4)\nfeature name ['setosa' 'versicolor' 'virginica']\ntarget type of data &lt;class 'numpy.ndarray'&gt;\ntarget shape (150,)\n\n\n\nprint('target labels',iris.target)\n\ntarget labels [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2\n 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\n 2 2]\n\n\nHa. In the original dataset, the data is organized by class. If we naively prepare the mini batches (sequentially), model will only see data corresponding to only one class. This will be pretty problematic to get proper gradient signals. We should shuffle the data s.t diversity in the mini batches is maintained.\nQuestions\nImagine you split the data into two batches. One containing only say class 0, and other contains only class 1. During training, the model sees these two batches cyclically. Will the model ever converge.\n\nWill it converge when the data is linearly separable?\nWill it converge when the data is not linearly separable?\nDoes having a balanced class representation in every mini batch helps? Which way does it?\nWhat will be the impact of learning rate when alternating between sets of samples of one class during gradient descent?\n\nLet us get back to checking the data, this time, from huggingace datasets itself. Later down the line, it may be useful to learn how to work with datasets library from HuggingFace. It has deep integrations with PyTorch.\n\nfrom datasets import Dataset\nimport pandas as pd\ndf = pd.read_csv(\"hf://datasets/scikit-learn/iris/Iris.csv\")\ndf = pd.DataFrame(df)\ndf.head()\n\n\n\n\n\n\n\n\nId\nSepalLengthCm\nSepalWidthCm\nPetalLengthCm\nPetalWidthCm\nSpecies\n\n\n\n\n0\n1\n5.1\n3.5\n1.4\n0.2\nIris-setosa\n\n\n1\n2\n4.9\n3.0\n1.4\n0.2\nIris-setosa\n\n\n2\n3\n4.7\n3.2\n1.3\n0.2\nIris-setosa\n\n\n3\n4\n4.6\n3.1\n1.5\n0.2\nIris-setosa\n\n\n4\n5\n5.0\n3.6\n1.4\n0.2\nIris-setosa\n\n\n\n\n\n\n\n\ndf['Species'].unique()\n\narray(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'], dtype=object)\n\n\nInterestingly, the first column is ids., which is not useful for us. May be, a perfect system can simply memory the indices and spit out the correct classes.\nAnd we need to map the Iris types into numerical codes for models to work with. In the torch, we can supply integers representing the classes, and we do not have to explicitly pass one-hot coded labels.\n\n# transform species to numerics\ndf.loc[df.Species=='Iris-setosa', 'Target'] = 0\ndf.loc[df.Species=='Iris-versicolor', 'Target'] = 1\ndf.loc[df.Species=='Iris-virginica', 'Target'] = 2\nprint(df.Target.unique())\ndf.head()\n\n[0. 1. 2.]\n\n\n\n\n\n\n\n\n\nId\nSepalLengthCm\nSepalWidthCm\nPetalLengthCm\nPetalWidthCm\nSpecies\nTarget\n\n\n\n\n0\n1\n5.1\n3.5\n1.4\n0.2\nIris-setosa\n0.0\n\n\n1\n2\n4.9\n3.0\n1.4\n0.2\nIris-setosa\n0.0\n\n\n2\n3\n4.7\n3.2\n1.3\n0.2\nIris-setosa\n0.0\n\n\n3\n4\n4.6\n3.1\n1.5\n0.2\nIris-setosa\n0.0\n\n\n4\n5\n5.0\n3.6\n1.4\n0.2\nIris-setosa\n0.0\n\n\n\n\n\n\n\n\n# drop the Id columns from the dataframe\ndf.drop(['Id'],axis=1,inplace=True)\ndf.head()\n\n\n\n\n\n\n\n\nSepalLengthCm\nSepalWidthCm\nPetalLengthCm\nPetalWidthCm\nSpecies\nTarget\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\nIris-setosa\n0.0\n\n\n1\n4.9\n3.0\n1.4\n0.2\nIris-setosa\n0.0\n\n\n2\n4.7\n3.2\n1.3\n0.2\nIris-setosa\n0.0\n\n\n3\n4.6\n3.1\n1.5\n0.2\nIris-setosa\n0.0\n\n\n4\n5.0\n3.6\n1.4\n0.2\nIris-setosa\n0.0\n\n\n\n\n\n\n\n\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\n\nX = df[df.columns[0:4]].values\ny = df.Target.values\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.8)\n\n\n# dip test:  check that data is shuffled\nprint(y_train)\n\n[2. 1. 2. 2. 0. 0. 0. 2. 1. 2. 0. 1. 1. 2. 2. 1. 1. 1. 1. 1. 1. 2. 0. 1.\n 1. 0. 1. 0. 1. 1.]\n\n\nQuestions\nAbove (visualluy inspecting data) is not a rigorous way (and repeatable way) to test if the data is shuffled (randomly). For numerical labels like integers, in the multi-class or binary class classification problems, which statistical test is suitable to flag if the data grouped?\n\n# scale the features to roughly have zero mean and unit variance\nfrom sklearn.preprocessing import StandardScaler\nscaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\nIt is always a good practice to scale the data (features).\n\nWhat might happen if the different features are on different scales?\nDoes it pose any problems for the optimizer (gradient descent)?\nDoes it cause any problems w.r.t interpretation of the feature importance?\n\nSuppose instead of\n\ncreate train, test splits\nlearn the scaling transformation on train data\nscale both train and test data\n\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.8)\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\nyou do the following\n\nlearn the scaling transformation on whole data before split\nand then create train, test splits\n\nX = scaler.fit_transform(X)\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.8)\nWhat happens? Should we do this?\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.autograd import Variable\n\n\nX_train = torch.FloatTensor(X_train)\nX_test = torch.FloatTensor(X_test)\ny_train = torch.LongTensor(y_train)\ny_test = torch.LongTensor(y_test)\n\nLet us define a FFN (or MLP) with two hidden layers. Suppose \\(x\\) is a \\(B \\times 4\\) vector, we have two hidden layers of 64 dimensions each, and we have three outputs (one for each class), then, \\[\nh_1 = ReLU(x W_{1} +b_{1}) \\\\\nh_2 = ReLU(h_1 W_{2} +b_{2}) \\\\\ny =  h_2 W_{out} + b_{out} \\\\\n\\]\nwhere \\[\nx \\text{ is } B \\times 4 \\\\\nW_{1} \\text{ is } 4 \\times 64 \\\\\nW_{2} \\text{ is } 64 \\times 64 \\\\\nW_{out} \\text{ is } 64 \\times 3 \\\\\nb_{1} \\text{ is } 1 \\times 64 \\\\\nb_{2} \\text{ is } 1 \\times 64 \\\\\nb_{out} \\text{ is } 1 \\times 3 \\\\\ny \\text{ is } B \\times 3 \\\\\n\\]\nIn $xW +b $, \\(b\\) is broadcast over all rows and \\(B\\) is the batch size.\n\\(ReLU(x) = x \\text{ if } x \\ge 0 \\text{ and } 0 \\text{ o.w }\\)\nQuestion\nWhat is the total number of parameters if input dimension is \\(p^{in}\\), output dimension is \\(p^{out}\\) and each hidden layer is of size \\(p^{h}_{i}\\) for the i-th hidden layer and there \\(d\\) such layers?\n\nclass MLP(nn.Module):\n    # define nn\n    def __init__(self, input_dim=4, output_dim=3, hidden_dim = [128,64]):\n        super(MLP, self).__init__()\n        self.h1 = nn.Linear(input_dim, hidden_dim[0])\n        self.h2 = nn.Linear(hidden_dim[0], hidden_dim[1])\n        self.out = nn.Linear(hidden_dim[1], output_dim)\n        self.relu = nn.ReLU()\n\n    def forward(self, X):\n        X = self.relu(self.h1(X))\n        X = self.relu(self.h2(X))\n        X = self.out(X)\n        return X\n\nWe have built a Neural Network with one input layer, two hidden layers, and one output layer.\nNote, the last output layer is a linear layer. Even though we are modeling a 3-class problem, output layer is still linear, and not softmax. Is this fine?\n\ninput_dim = 4 # No. of features\noutput_dim = 3 # No. of outputs\nhidden_dim = [64, 64] # No. of perceptrons in 1st hidden layer and 2nd hidden layer\nmodel = MLP(input_dim=input_dim, output_dim=output_dim, hidden_dim=hidden_dim) # instantiate the model\n\n\n# inspect the model for a given batch size\nfrom torchinfo import summary\nsummary(model, input_size=(10, 4))\n\n==========================================================================================\nLayer (type:depth-idx)                   Output Shape              Param #\n==========================================================================================\nMLP                                      [10, 3]                   --\n├─Linear: 1-1                            [10, 64]                  320\n├─ReLU: 1-2                              [10, 64]                  --\n├─Linear: 1-3                            [10, 64]                  4,160\n├─ReLU: 1-4                              [10, 64]                  --\n├─Linear: 1-5                            [10, 3]                   195\n==========================================================================================\nTotal params: 4,675\nTrainable params: 4,675\nNon-trainable params: 0\nTotal mult-adds (M): 0.05\n==========================================================================================\nInput size (MB): 0.00\nForward/backward pass size (MB): 0.01\nParams size (MB): 0.02\nEstimated Total Size (MB): 0.03\n==========================================================================================\n\n\n\nlearning_rate = 0.01\ncriterion = nn.CrossEntropyLoss()\noptimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)\n\n\ndef train_network(model,optimizer,criterion,X_train,y_train,X_test,y_test,num_epochs,train_losses,test_losses):\n    for epoch in range(num_epochs):\n        #clear out the gradients from the last step loss.backward()\n        optimizer.zero_grad()\n        \n        #forward feed\n        output_train = model(X_train)\n\n        #calculate the loss\n        loss_train = criterion(output_train, y_train)\n\n\n        #backward propagation: calculate gradients\n        loss_train.backward()\n\n        #update the weights\n        optimizer.step()\n        \n        output_test = model(X_test)\n        loss_test = criterion(output_test,y_test)\n\n        train_losses[epoch] = loss_train.item()\n        test_losses[epoch] = loss_test.item()\n\n        if (epoch + 1) % 50 == 0:\n            print(f\"Epoch {epoch+1}/{num_epochs}, Train Loss: {loss_train.item():.4f}, Test Loss: {loss_test.item():.4f}\")\n\nIn the above train_network block, we have not used batches. Entire train data is passed at once. So, one epoch is one complete pass through the data.\nExercise\nModify the training loop to pass over mini batches.\n\nnum_epochs = 1000\ntrain_losses = np.zeros(num_epochs)\ntest_losses  = np.zeros(num_epochs)\n\n\ntrain_network(model,optimizer,criterion,X_train,y_train,X_test,y_test,num_epochs,train_losses,test_losses)\n\nEpoch 50/1000, Train Loss: 0.0001, Test Loss: 0.1433\nEpoch 100/1000, Train Loss: 0.0000, Test Loss: 0.1390\nEpoch 150/1000, Train Loss: 0.0000, Test Loss: 0.1403\nEpoch 200/1000, Train Loss: 0.0000, Test Loss: 0.1430\nEpoch 250/1000, Train Loss: 0.0000, Test Loss: 0.1450\nEpoch 300/1000, Train Loss: 0.0000, Test Loss: 0.1467\nEpoch 350/1000, Train Loss: 0.0000, Test Loss: 0.1484\nEpoch 400/1000, Train Loss: 0.0000, Test Loss: 0.1500\nEpoch 450/1000, Train Loss: 0.0000, Test Loss: 0.1514\nEpoch 500/1000, Train Loss: 0.0000, Test Loss: 0.1525\nEpoch 550/1000, Train Loss: 0.0000, Test Loss: 0.1533\nEpoch 600/1000, Train Loss: 0.0000, Test Loss: 0.1540\nEpoch 650/1000, Train Loss: 0.0000, Test Loss: 0.1547\nEpoch 700/1000, Train Loss: 0.0000, Test Loss: 0.1554\nEpoch 750/1000, Train Loss: 0.0000, Test Loss: 0.1562\nEpoch 800/1000, Train Loss: 0.0000, Test Loss: 0.1569\nEpoch 850/1000, Train Loss: 0.0000, Test Loss: 0.1577\nEpoch 900/1000, Train Loss: 0.0000, Test Loss: 0.1584\nEpoch 950/1000, Train Loss: 0.0000, Test Loss: 0.1592\nEpoch 1000/1000, Train Loss: 0.0000, Test Loss: 0.1598\n\n\n\nplt.figure(figsize=(4,4))\nplt.plot(train_losses, label='train loss')\nplt.plot(test_losses, label='test loss')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\npredictions_train = []\npredictions_test =  []\nwith torch.no_grad():\n    predictions_train = model(X_train)\n    predictions_test = model(X_test)\n\n\nprint(predictions_train.shape)\nprint(type(predictions_train))\n\nprint(y_train.shape)\nprint(type(y_train))\n\ntorch.Size([30, 3])\n&lt;class 'torch.Tensor'&gt;\ntorch.Size([30])\n&lt;class 'torch.Tensor'&gt;\n\n\n\ndef get_accuracy_multiclass(pred_arr,original_arr):\n    if len(pred_arr)!=len(original_arr):\n        return False\n    pred_arr = pred_arr.numpy()\n    original_arr = original_arr.numpy()\n    final_pred= []\n    # we will get something like this in the pred_arr [32.1680,12.9350,-58.4877]\n    # so will be taking the index of that argument which has the highest value here 32.1680 which corresponds to 0th index\n    for i in range(len(pred_arr)):\n        final_pred.append(np.argmax(pred_arr[i]))\n    final_pred = np.array(final_pred)\n    count = 0\n    #here we are doing a simple comparison between the predicted_arr and the original_arr to get the final accuracy\n    for i in range(len(original_arr)):\n        if final_pred[i] == original_arr[i]:\n            count+=1\n    return count/len(final_pred)\n\nNotice that the model predictions were of size (batch_size, output_dim) and we have to take argmax of the model predictions to produce the class labels. The predictions are in the logit space (recall that the output layer is linear and not softmax).\n\ntrain_acc = get_accuracy_multiclass(predictions_train,y_train)\ntest_acc  = get_accuracy_multiclass(predictions_test,y_test)\nprint(f\"Training Accuracy: {round(train_acc*100,3)}\")\nprint(f\"Test Accuracy: {round(test_acc*100,3)}\")\n\nTraining Accuracy: 100.0\nTest Accuracy: 95.0",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Linear Regression:02</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/02-01-Class-Logistic-Sim.html",
+    "href": "notebooks/02-01-Class-Logistic-Sim.html",
+    "title": "Classification:01",
+    "section": "",
+    "text": "Generate Data\nHere, we will generate a data with a known function, i.e., we will simulate data. The new term for this is Generative AI :). The advantage is, we exactly know the model. So, we will know if our understanding is correct.\nSimulation is a very powerful technique when we are developing new theory or implementing a known theory. The ground truth is known, so we check our understanding, can debug if things do not go as expected.\nHere, we will consider the following model.\n$$\nz = -1 + 2x_1 + \\ x_1 U(-1,1) \\ N(0,^2) $$\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nn = 100\nx = 2*(np.random.random(n))-1\nb0 = -1\nb1 = 2\nz = b0 + b1*x\nnoise = np.random.normal(0,0.5,n)\nz = z + noise \n\nplt.scatter(x, z)\nplt.xlabel('x')\nplt.ylabel('z')\nplt.title('Scatter plot of x vs z')\nplt.show()\nOk, but we want to something like 0 and 1 as class labels. The simplest way to do that would be to threshold it, and now we are we have dataset to try out a classification model.\n\\[\ny = 1 \\text{ iff } z &gt; 0 \\\\\n= 0 \\text{  o.w }\n\\]\ny = np.heaviside(x, 0)\nLet us check the data, and mark the “y” labels what sort of data we have generated!\nind = y==0\nx1 = x[ind]\nz1 = z[ind]\nx2 = x[~ind]\nz2 = z[~ind]\n\nplt.scatter(x1, z1, color='tab:blue')\nplt.scatter(x2, z2, color='tab:orange')\nplt.show()",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Classification:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/02-01-Class-Logistic-Sim.html#fit-train-let-us-fit-model-using-sklearns-apis",
+    "href": "notebooks/02-01-Class-Logistic-Sim.html#fit-train-let-us-fit-model-using-sklearns-apis",
+    "title": "Classification:01",
+    "section": "Fit/ Train: Let us fit model using sklearn’s APIs",
+    "text": "Fit/ Train: Let us fit model using sklearn’s APIs\n\nfrom sklearn.linear_model import LogisticRegression\n\n# Reshape x to be a 2D array with one column\nX = np.reshape(x, (n, 1))\n\n# Fit the linear regression model\nreg = LogisticRegression()\nreg.fit(X, y)\n\nLogisticRegression()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.  LogisticRegression?Documentation for LogisticRegressioniFittedLogisticRegression() \n\n\n\nprint('coefss', reg.coef_)\nprint('intercept', reg.intercept_)\nprint('score', reg.score(X,y))\n\ncoefss [[4.2644811]]\nintercept [-0.10631042]\nscore 1.0",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Classification:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/02-01-Class-Logistic-Sim.html#diagnosis",
+    "href": "notebooks/02-01-Class-Logistic-Sim.html#diagnosis",
+    "title": "Classification:01",
+    "section": "Diagnosis",
+    "text": "Diagnosis\nAsses the model fit and observe how the errors are!\n\nyh_b0 = reg.predict(X)\n\nplt.axvline(x = 0, color = 'b', label = 'true decision boundary in z')\nplt.scatter(x1, z1, color='tab:blue')\nplt.scatter(x2, z2, color='tab:orange')\nplt.show()\n\nindh = (yh_b0==0)\nplt.axvline(x = 0, color = 'b', label = 'true decision boundary in z')\nplt.scatter(x[indh], z[indh], color='tab:blue')\nplt.scatter(x[~indh], z[~indh], color='tab:orange')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# lets plot the decision boundary on \"x\", not on \"z\"\n\nyh = reg.predict(X)\n\nplt.scatter(x1, z1, color='tab:blue')\nplt.scatter(x2, z2, color='tab:orange')\nplt.show()\n\nindh = (yh==0)\n\nplt.scatter(x[indh], z[indh], color='tab:blue')\nplt.scatter(x[~indh], z[~indh], color='tab:orange')\n\nxb = np.linspace(-1, 1, 100).reshape(100,1)\nyb = reg.intercept_ + reg.coef_*xb\nplt.plot(xb, yb, label='boundary', color='tab:green')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# Let us plot the class probabilties\n\nyp = reg.predict_proba(X)\nindh = (yp[:,1]&gt;0.5)\n\n\nplt.scatter(x[indh], z[indh], color='tab:blue')\nplt.scatter(x[~indh], z[~indh], color='tab:orange')\n\n\n\n\n\n\n\n\n\n\nyp\n\narray([[0.36537847, 0.63462153],\n       [0.97407006, 0.02592994],\n       [0.02138806, 0.97861194],\n       [0.89835694, 0.10164306],\n       [0.9489597 , 0.0510403 ],\n       [0.68144021, 0.31855979],\n       [0.96452258, 0.03547742],\n       [0.98615379, 0.01384621],\n       [0.02857479, 0.97142521],\n       [0.9773392 , 0.0226608 ],\n       [0.21623571, 0.78376429],\n       [0.32103864, 0.67896136],\n       [0.55813328, 0.44186672],\n       [0.21485942, 0.78514058],\n       [0.13468323, 0.86531677],\n       [0.05768648, 0.94231352],\n       [0.98486316, 0.01513684],\n       [0.14471142, 0.85528858],\n       [0.57129839, 0.42870161],\n       [0.96611107, 0.03388893],\n       [0.78142669, 0.21857331],\n       [0.01639008, 0.98360992],\n       [0.13898127, 0.86101873],\n       [0.57809326, 0.42190674],\n       [0.04983911, 0.95016089],\n       [0.36260259, 0.63739741],\n       [0.0234669 , 0.9765331 ],\n       [0.01968519, 0.98031481],\n       [0.94174667, 0.05825333],\n       [0.07309672, 0.92690328],\n       [0.45346699, 0.54653301],\n       [0.76815642, 0.23184358],\n       [0.01944703, 0.98055297],\n       [0.20389886, 0.79610114],\n       [0.83785772, 0.16214228],\n       [0.72934537, 0.27065463],\n       [0.67430888, 0.32569112],\n       [0.21984521, 0.78015479],\n       [0.38476838, 0.61523162],\n       [0.1233028 , 0.8766972 ],\n       [0.85073795, 0.14926205],\n       [0.15159765, 0.84840235],\n       [0.97683206, 0.02316794],\n       [0.92534332, 0.07465668],\n       [0.88447866, 0.11552134],\n       [0.94615357, 0.05384643],\n       [0.09941346, 0.90058654],\n       [0.98660999, 0.01339001],\n       [0.98638602, 0.01361398],\n       [0.89412218, 0.10587782],\n       [0.90428521, 0.09571479],\n       [0.75370113, 0.24629887],\n       [0.93547224, 0.06452776],\n       [0.95117759, 0.04882241],\n       [0.06023714, 0.93976286],\n       [0.12904161, 0.87095839],\n       [0.95148505, 0.04851495],\n       [0.97294262, 0.02705738],\n       [0.27842266, 0.72157734],\n       [0.79603805, 0.20396195],\n       [0.73090105, 0.26909895],\n       [0.38455922, 0.61544078],\n       [0.95649125, 0.04350875],\n       [0.98592395, 0.01407605],\n       [0.08967101, 0.91032899],\n       [0.25893025, 0.74106975],\n       [0.92622843, 0.07377157],\n       [0.84926394, 0.15073606],\n       [0.07203525, 0.92796475],\n       [0.20211772, 0.79788228],\n       [0.09272702, 0.90727298],\n       [0.85370743, 0.14629257],\n       [0.97198461, 0.02801539],\n       [0.06353857, 0.93646143],\n       [0.95813466, 0.04186534],\n       [0.58794009, 0.41205991],\n       [0.27298842, 0.72701158],\n       [0.02284161, 0.97715839],\n       [0.97935794, 0.02064206],\n       [0.90361116, 0.09638884],\n       [0.71020734, 0.28979266],\n       [0.06056482, 0.93943518],\n       [0.98162937, 0.01837063],\n       [0.05044866, 0.94955134],\n       [0.96207677, 0.03792323],\n       [0.93938431, 0.06061569],\n       [0.10437205, 0.89562795],\n       [0.26599617, 0.73400383],\n       [0.97137991, 0.02862009],\n       [0.93760139, 0.06239861],\n       [0.15824936, 0.84175064],\n       [0.7277498 , 0.2722502 ],\n       [0.9584332 , 0.0415668 ],\n       [0.16237529, 0.83762471],\n       [0.88181683, 0.11818317],\n       [0.97508757, 0.02491243],\n       [0.06525086, 0.93474914],\n       [0.0894163 , 0.9105837 ],\n       [0.07609023, 0.92390977],\n       [0.90343615, 0.09656385]])",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Classification:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/02-01-Class-Logistic-Sim.html#evaluation",
+    "href": "notebooks/02-01-Class-Logistic-Sim.html#evaluation",
+    "title": "Classification:01",
+    "section": "Evaluation",
+    "text": "Evaluation\nReport the model metrics\n\nfrom sklearn.metrics import classification_report\nfrom sklearn.metrics import confusion_matrix\n\nprint('Confusion Matrix')\nprint(confusion_matrix(y, yh))\n\nprint('Classification Report')\nprint(classification_report(y, yh))\n\nConfusion Matrix\n[[55  0]\n [ 0 45]]\nClassification Report\n              precision    recall  f1-score   support\n\n         0.0       1.00      1.00      1.00        55\n         1.0       1.00      1.00      1.00        45\n\n    accuracy                           1.00       100\n   macro avg       1.00      1.00      1.00       100\nweighted avg       1.00      1.00      1.00       100\n\n\n\nNote:\nWe did not create train and test splits. Since it was a simulation, if we split create a test split, the model behavior will change much. In other words, the train and test will have identical distributions by design, with very high probability.\nHowever, when solving real world problems, where we are not sure about the data generative process, the hold out methods is essentials to test the generalization ability of the model , beyond the training data.",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Classification:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/02-01-Class-Logistic-Sim.html#questions",
+    "href": "notebooks/02-01-Class-Logistic-Sim.html#questions",
+    "title": "Classification:01",
+    "section": "Questions",
+    "text": "Questions\n\nIs the Logistic Regression decision boundary correct?\nIs the Logistic Regression a faithful for this simulated data? What could you have done?",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Classification:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/02-02-Class-Logistic-Iris.html",
+    "href": "notebooks/02-02-Class-Logistic-Iris.html",
+    "title": "Classification:02",
+    "section": "",
+    "text": "Build a model\nLet is build Logistic Classifier\n# X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.8)\n\nfrom sklearn.linear_model import LogisticRegression\n\n# Fit the linear regression model\nclf = LogisticRegression()\nclf.fit(X_train, y_train)\n\nLogisticRegression()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.  LogisticRegression?Documentation for LogisticRegressioniFittedLogisticRegression()\npredictions_train = clf.predict(X_train)\npredictions_test = clf.predict(X_test)\nfrom sklearn.metrics import accuracy_score\n\ntrain_acc = accuracy_score(predictions_train,y_train)\ntest_acc  = accuracy_score(predictions_test,y_test)\nprint(f\"Training Accuracy: {round(train_acc*100,3)}\")\nprint(f\"Test Accuracy: {round(test_acc*100,3)}\")\n\nTraining Accuracy: 96.667\nTest Accuracy: 95.833",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Classification:02</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/03-01-Clust-Sim-Ch12-ISL.html",
+    "href": "notebooks/03-01-Clust-Sim-Ch12-ISL.html",
+    "title": "Clustering:01",
+    "section": "",
+    "text": "Lab 2: Clustering",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Clustering:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/03-01-Clust-Sim-Ch12-ISL.html#lab-2-clustering",
+    "href": "notebooks/03-01-Clust-Sim-Ch12-ISL.html#lab-2-clustering",
+    "title": "Clustering:01",
+    "section": "",
+    "text": "10.5.1 K-Means Clustering\n\n# Generate data\nnp.random.seed(2)\nX = np.random.standard_normal((50,2))\nX[:25,0] = X[:25,0]+3\nX[:25,1] = X[:25,1]-4\n\n\nK = 2\n\nkm1 = KMeans(n_clusters=2, n_init=20)\nkm1.fit(X)\n\nKMeans(n_clusters=2, n_init=20)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.  KMeans?Documentation for KMeansiFittedKMeans(n_clusters=2, n_init=20) \n\n\n\nkm1.labels_\n\narray([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 1], dtype=int32)\n\n\nSee plot for K=2 below.\n\n\nK = 3\n\nnp.random.seed(4)\nkm2 = KMeans(n_clusters=3, n_init=20)\nkm2.fit(X)\n\nKMeans(n_clusters=3, n_init=20)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.  KMeans?Documentation for KMeansiFittedKMeans(n_clusters=3, n_init=20) \n\n\n\npd.Series(km2.labels_).value_counts()\n\n0    21\n2    20\n1     9\nName: count, dtype: int64\n\n\n\nkm2.cluster_centers_\n\narray([[ 2.82805911, -4.11351797],\n       [ 0.69945422, -2.14934345],\n       [-0.27876523,  0.51224152]])\n\n\n\nkm2.labels_\n\narray([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1,\n       0, 0, 0, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2,\n       2, 2, 2, 2, 2, 1], dtype=int32)\n\n\n\n# Sum of distances of samples to their closest cluster center.\nkm2.inertia_\n\n68.97379200939724\n\n\n\nfig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,5))\n\nax1.scatter(X[:,0], X[:,1], s=40, c=km1.labels_, cmap=plt.cm.prism) \nax1.set_title('K-Means Clustering Results with K=2')\nax1.scatter(km1.cluster_centers_[:,0], km1.cluster_centers_[:,1], marker='+', s=100, c='k', linewidth=2)\n\nax2.scatter(X[:,0], X[:,1], s=40, c=km2.labels_, cmap=plt.cm.prism) \nax2.set_title('K-Means Clustering Results with K=3')\nax2.scatter(km2.cluster_centers_[:,0], km2.cluster_centers_[:,1], marker='+', s=100, c='k', linewidth=2);\n\n\n\n\n\n\n\n\n\n\n\n10.5.3 Hierarchical Clustering\n\nscipy\n\nfig, (ax1,ax2,ax3) = plt.subplots(3,1, figsize=(15,18))\n\nfor linkage, cluster, ax in zip([hierarchy.complete(X), hierarchy.average(X), hierarchy.single(X)], ['c1','c2','c3'],\n                                [ax1,ax2,ax3]):\n    cluster = hierarchy.dendrogram(linkage, ax=ax, color_threshold=0)\n\nax1.set_title('Complete Linkage')\nax2.set_title('Average Linkage')\nax3.set_title('Single Linkage');",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Clustering:01</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/03-02-Clust-Real-Ch12-ISL.html",
+    "href": "notebooks/03-02-Clust-Real-Ch12-ISL.html",
+    "title": "Clustering:02",
+    "section": "",
+    "text": "Lab 2: Clustering",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Clustering:02</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/03-02-Clust-Real-Ch12-ISL.html#lab-2-clustering",
+    "href": "notebooks/03-02-Clust-Real-Ch12-ISL.html#lab-2-clustering",
+    "title": "Clustering:02",
+    "section": "",
+    "text": "10.5.1 K-Means Clustering\n\n# Generate data\nnp.random.seed(2)\nX = np.random.standard_normal((50,2))\nX[:25,0] = X[:25,0]+3\nX[:25,1] = X[:25,1]-4\n\n\nK = 2\n\nkm1 = KMeans(n_clusters=2, n_init=20)\nkm1.fit(X)\n\nKMeans(n_clusters=2, n_init=20)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.  KMeans?Documentation for KMeansiFittedKMeans(n_clusters=2, n_init=20) \n\n\n\nkm1.labels_\n\narray([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 1], dtype=int32)\n\n\nSee plot for K=2 below.\n\n\nK = 3\n\nnp.random.seed(4)\nkm2 = KMeans(n_clusters=3, n_init=20)\nkm2.fit(X)\n\nKMeans(n_clusters=3, n_init=20)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.  KMeans?Documentation for KMeansiFittedKMeans(n_clusters=3, n_init=20) \n\n\n\npd.Series(km2.labels_).value_counts()\n\n0    21\n2    20\n1     9\nName: count, dtype: int64\n\n\n\nkm2.cluster_centers_\n\narray([[ 2.82805911, -4.11351797],\n       [ 0.69945422, -2.14934345],\n       [-0.27876523,  0.51224152]])\n\n\n\nkm2.labels_\n\narray([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1,\n       0, 0, 0, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2,\n       2, 2, 2, 2, 2, 1], dtype=int32)\n\n\n\n# Sum of distances of samples to their closest cluster center.\nkm2.inertia_\n\n68.97379200939724\n\n\n\nfig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,5))\n\nax1.scatter(X[:,0], X[:,1], s=40, c=km1.labels_, cmap=plt.cm.prism) \nax1.set_title('K-Means Clustering Results with K=2')\nax1.scatter(km1.cluster_centers_[:,0], km1.cluster_centers_[:,1], marker='+', s=100, c='k', linewidth=2)\n\nax2.scatter(X[:,0], X[:,1], s=40, c=km2.labels_, cmap=plt.cm.prism) \nax2.set_title('K-Means Clustering Results with K=3')\nax2.scatter(km2.cluster_centers_[:,0], km2.cluster_centers_[:,1], marker='+', s=100, c='k', linewidth=2);\n\n\n\n\n\n\n\n\n\n\n\n10.5.3 Hierarchical Clustering\n\nscipy\n\nfig, (ax1,ax2,ax3) = plt.subplots(3,1, figsize=(15,18))\n\nfor linkage, cluster, ax in zip([hierarchy.complete(X), hierarchy.average(X), hierarchy.single(X)], ['c1','c2','c3'],\n                                [ax1,ax2,ax3]):\n    cluster = hierarchy.dendrogram(linkage, ax=ax, color_threshold=0)\n\nax1.set_title('Complete Linkage')\nax2.set_title('Average Linkage')\nax3.set_title('Single Linkage');",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Clustering:02</span>"
     ]
   },
   {
@@ -25,7 +190,7 @@
     "href": "index.html#announcements",
     "title": "Introduction to AI",
     "section": "Announcements",
-    "text": "Announcements\n\n[11-Feb-2025] Course website up",
+    "text": "Announcements\n\n[15-Feb-2025] Added notes on Linear Regression, Logistic Regression, Clustering (wip)\n[11-Feb-2025] Course website up",
     "crumbs": [
       "Welcome"
     ]
@@ -130,7 +295,7 @@
     "href": "lectures/L01.html#in-class",
     "title": "Linear Regression",
     "section": "In-Class",
-    "text": "In-Class\n\nChapter 03 on Linear Regression from An Introduction to Statistical Learning",
+    "text": "In-Class\n\nChapter 03 on Linear Regression from An Introduction to Statistical Learning\nSupervised Learning with sklearn docs",
     "crumbs": [
       "Lectures",
       "Linear Regression"
@@ -141,7 +306,7 @@
     "href": "lectures/L01.html#lab",
     "title": "Linear Regression",
     "section": "Lab",
-    "text": "Lab\n\nClassification on Iris data",
+    "text": "Lab\n\nLinear Regression on simulated data notebooksimulated data\nLinear Regression on Yield data notebook",
     "crumbs": [
       "Lectures",
       "Linear Regression"
@@ -189,6 +354,182 @@
     "crumbs": [
       "Lectures",
       "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html",
+    "href": "lectures/L02.html",
+    "title": "Logistic Regression",
+    "section": "",
+    "text": "Pre-work:",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#pre-work",
+    "href": "lectures/L02.html#pre-work",
+    "title": "Logistic Regression",
+    "section": "",
+    "text": "What is ML youtube from Luis Serrano\nWorkflow of an Model development\n\nLinear Regression",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#in-class",
+    "href": "lectures/L02.html#in-class",
+    "title": "Logistic Regression",
+    "section": "In-Class",
+    "text": "In-Class\n\nChapter 04 on Classification from An Introduction to Statistical Learning\nSupervised Learning with sklearn docs",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#lab",
+    "href": "lectures/L02.html#lab",
+    "title": "Logistic Regression",
+    "section": "Lab",
+    "text": "Lab\n\nLogistic Regression on simulated data notebook\nLogistic Regression on Iris data notebook",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#post-class",
+    "href": "lectures/L02.html#post-class",
+    "title": "Logistic Regression",
+    "section": "Post-class:",
+    "text": "Post-class:",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#notes",
+    "href": "lectures/L02.html#notes",
+    "title": "Logistic Regression",
+    "section": "Notes",
+    "text": "Notes",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#advanced",
+    "href": "lectures/L02.html#advanced",
+    "title": "Logistic Regression",
+    "section": "Advanced",
+    "text": "Advanced",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L02.html#references",
+    "href": "lectures/L02.html#references",
+    "title": "Logistic Regression",
+    "section": "References",
+    "text": "References",
+    "crumbs": [
+      "Lectures",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html",
+    "href": "lectures/L03.html",
+    "title": "Clustering",
+    "section": "",
+    "text": "Pre-work:",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#pre-work",
+    "href": "lectures/L03.html#pre-work",
+    "title": "Clustering",
+    "section": "",
+    "text": "What is ML youtube from Luis Serrano\nWorkflow of an Model development",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#in-class",
+    "href": "lectures/L03.html#in-class",
+    "title": "Clustering",
+    "section": "In-Class",
+    "text": "In-Class\n\nChapter 12 on Clustering from ISL\nClustering documentation from sklearn docs",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#lab",
+    "href": "lectures/L03.html#lab",
+    "title": "Clustering",
+    "section": "Lab",
+    "text": "Lab\n\nk-Means clustering on simulated data notebook Chapter 12 of ISL\nk-Means clustering on real data notebook Chapter 12 of ISL",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#post-class",
+    "href": "lectures/L03.html#post-class",
+    "title": "Clustering",
+    "section": "Post-class:",
+    "text": "Post-class:\n\nwalk through this code on k-Means\nclValid: An R Package for Cluster Validation\nclusteval for evaluating clusters using different metrics.",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#notes",
+    "href": "lectures/L03.html#notes",
+    "title": "Clustering",
+    "section": "Notes",
+    "text": "Notes",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#advanced",
+    "href": "lectures/L03.html#advanced",
+    "title": "Clustering",
+    "section": "Advanced",
+    "text": "Advanced",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
+    ]
+  },
+  {
+    "objectID": "lectures/L03.html#references",
+    "href": "lectures/L03.html#references",
+    "title": "Clustering",
+    "section": "References",
+    "text": "References\n\npython notebooks for Chapter 12 of ISL\nAn Introduction to Statistical Learning",
+    "crumbs": [
+      "Lectures",
+      "Clustering"
     ]
   }
 ]

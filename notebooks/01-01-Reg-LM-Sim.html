@@ -8,7 +8,7 @@
 
 <meta name="author" content="mlsquare">
 
-<title>Regression – Introduction to AI</title>
+<title>Linear Regression:01 – Introduction to AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lectures/L01.html" rel="prev">
+<link href="../notebooks/01-02-Reg-LM-Yield.html" rel="next">
+<link href="../lectures/L03.html" rel="prev">
 <link href="../logo.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -111,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html">Lab</a></li><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html"><span class="chapter-title">Regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html">Lab</a></li><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html"><span class="chapter-title">Linear Regression:01</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -182,6 +217,18 @@ window.Quarto = {
  <span class="menu-text">Linear Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/L02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -195,7 +242,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/01-01-Reg-LM-Sim.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Regression</span></a>
+  <a href="../notebooks/01-01-Reg-LM-Sim.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Linear Regression:01</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/01-02-Reg-LM-Yield.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Linear Regression:02</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/02-01-Class-Logistic-Sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Classification:01</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/02-02-Class-Logistic-Iris.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Classification:02</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/03-01-Clust-Sim-Ch12-ISL.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Clustering:01</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/03-02-Clust-Real-Ch12-ISL.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Clustering:02</span></a>
   </div>
 </li>
       </ul>
@@ -211,15 +283,19 @@ window.Quarto = {
    
   <ul>
   <li><a href="#generate-data" id="toc-generate-data" class="nav-link active" data-scroll-target="#generate-data">Generate Data</a></li>
+  <li><a href="#fit-train-let-us-fit-model-using-sklearns-apis" id="toc-fit-train-let-us-fit-model-using-sklearns-apis" class="nav-link" data-scroll-target="#fit-train-let-us-fit-model-using-sklearns-apis">Fit/ Train: Let us fit model using sklearn’s APIs</a></li>
+  <li><a href="#diagnosis" id="toc-diagnosis" class="nav-link" data-scroll-target="#diagnosis">Diagnosis</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/mlsquare/intro2ai/blob/main/notebooks/01-01-Reg-LM-Sim.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2ai/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html">Lab</a></li><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html"><span class="chapter-title">Regression</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html">Lab</a></li><li class="breadcrumb-item"><a href="../notebooks/01-01-Reg-LM-Sim.html"><span class="chapter-title">Linear Regression:01</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Regression</h1>
+<h1 class="title">Linear Regression:01</h1>
 </div>
 
 
@@ -239,12 +315,119 @@ window.Quarto = {
 <p>A notebook to implement a pretty simple model to learn about Linear Regression.</p>
 <section id="generate-data" class="level2">
 <h2 class="anchored" data-anchor-id="generate-data">Generate Data</h2>
-<p>Here, we will generate a data with known function, i.e., we will simulate data. The new term for this is <em>Generative AI</em> :). The advantage is, we exactly know the model. So, we will know if our understanding is correct.</p>
-<p>Simulation is a very powerful technique when we are developing new theory or implementing a known theory. The ground truth is known, so we check our understaning, can debug if things do not go as expected.</p>
+<p>Here, we will generate a data with a known function, i.e., we will simulate data. The new term for this is <em>Generative AI</em> :). The advantage is, we exactly know the model. So, we will know if our understanding is correct.</p>
+<p>Simulation is a very powerful technique when we are developing new theory or implementing a known theory. The ground truth is known, so we check our understanding, can debug if things do not go as expected.</p>
 <p>Here, we will consider the following model.</p>
 <p><span class="math display">\[
-y = -1 + 2x_1 + 3x_3
+y = -1 + 2x_1 \\
+x_1 \sim U(-1,1)
 \]</span></p>
+<div id="cell-3" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(np.random.random(n))<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>b0 <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> b0 <span class="op">+</span> b1<span class="op">*</span>x</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> np.random.normal(<span class="dv">0</span>,<span class="fl">0.5</span>,n)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y <span class="op">+</span> noise </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-01-Reg-LM-Sim_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="fit-train-let-us-fit-model-using-sklearns-apis" class="level2">
+<h2 class="anchored" data-anchor-id="fit-train-let-us-fit-model-using-sklearns-apis">Fit/ Train: Let us fit model using sklearn’s APIs</h2>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape x to be a 2D array with one column</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.reshape(x, (n, <span class="dv">1</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the linear regression model</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>reg <span class="op">=</span> LinearRegression()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>reg.fit(X, y)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the coefficients and the score</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'coefs'</span>, reg.coef_)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'intercepts'</span>, reg.intercept_)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'score'</span>, reg.score(X, y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>coefs [1.98992655]
+intercepts -0.9556999786482694
+score 0.8181079845791537</code></pre>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the linear regression model but w/o intercept</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression(fit_intercept<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the coefficients and the score</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'coefs'</span>, model.coef_)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'intercepts'</span>, model.intercept_)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'score'</span>, model.score(X, y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>coefs [2.06639893]
+intercepts 0.0
+score 0.26761225800328803</code></pre>
+</div>
+</div>
+</section>
+<section id="diagnosis" class="level2">
+<h2 class="anchored" data-anchor-id="diagnosis">Diagnosis</h2>
+<p>Asses the model fit and observe how the errors are!</p>
+<div id="cell-8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>yh_b0 <span class="op">=</span> reg.predict(X)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y, label<span class="op">=</span><span class="st">'Observations'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,yh_b0,linewidth<span class="op">=</span><span class="dv">3</span>, color<span class="op">=</span><span class="st">"tab:red"</span>, label<span class="op">=</span><span class="st">'with intercept'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>yh <span class="op">=</span> model.predict(X)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,yh,linewidth<span class="op">=</span><span class="dv">3</span>, color<span class="op">=</span><span class="st">"tab:orange"</span>,label<span class="op">=</span><span class="st">'w/o intercept'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-01-Reg-LM-Sim_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
+<p>Report the model metrics</p>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y, yh)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'mse w/o intercept'</span>, mse)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y, yh_b0)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'mse with intercept'</span>, mse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mse w/o intercept 1.212484058759364
+mse with intercept 0.301126242927177</code></pre>
+</div>
+</div>
+<p>Note:</p>
+<p>We did not create train and test splits. Since it was a simulation, if we split create a test split, the model behavior will change much. In other words, the train and test will have identical distributions by design, with very high probability.</p>
+<p>However, when solving real world problems, where we are not sure about the data generative process, the hold out methods is essentials to test the generalization ability of the model , beyond the training data.</p>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ol type="1">
+<li>Will the MSE improve if I increase the data by 10 fold? In other words, will increasing the data size lead to model improvement?</li>
+<li>How is MSE related to the noise variance?</li>
+<li>Can the MSE be lowered by adding more features?</li>
+</ol>
 
 
 </section>
@@ -672,11 +855,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lectures/L01.html" class="pagination-link" aria-label="Linear Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Linear Regression</span>
+      <a href="../lectures/L03.html" class="pagination-link" aria-label="Clustering">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Clustering</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../notebooks/01-02-Reg-LM-Yield.html" class="pagination-link" aria-label="Linear Regression:02">
+        <span class="nav-page-text"><span class="chapter-title">Linear Regression:02</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

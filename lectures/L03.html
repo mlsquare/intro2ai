@@ -8,7 +8,7 @@
 
 <meta name="author" content="mlsquare">
 
-<title>ML Workflow – Introduction to AI</title>
+<title>Clustering – Introduction to AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lectures/L01.html" rel="next">
-<link href="../course.html" rel="prev">
+<link href="../notebooks/01-01-Reg-LM-Sim.html" rel="next">
+<link href="../lectures/L02.html" rel="prev">
 <link href="../logo.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L00.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L00.html">ML Workflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L00.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L03.html">Clustering</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/L00.html" class="sidebar-item-text sidebar-link active">
+  <a href="../lectures/L00.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ML Workflow</span></a>
   </div>
 </li>
@@ -162,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Clustering</span></a>
   </div>
 </li>
@@ -220,16 +220,21 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#pre-work" id="toc-pre-work" class="nav-link active" data-scroll-target="#pre-work">Pre-work:</a></li>
+  <li><a href="#in-class" id="toc-in-class" class="nav-link" data-scroll-target="#in-class">In-Class</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  <li><a href="#post-class" id="toc-post-class" class="nav-link" data-scroll-target="#post-class">Post-class:</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced">Advanced</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2ai/edit/main/lectures/L00.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2ai/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2ai/edit/main/lectures/L03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2ai/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L00.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L00.html">ML Workflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L00.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L03.html">Clustering</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">ML Workflow</h1>
+<h1 class="title">Clustering</h1>
 </div>
 
 
@@ -249,23 +254,44 @@ ul.task-list li input[type="checkbox"] {
 <section id="pre-work" class="level2">
 <h2 class="anchored" data-anchor-id="pre-work">Pre-work:</h2>
 <ul>
-<li>What is ML. Watch this <a href="https://youtu.be/IpGxLWOIZy4?si=SoLiRV7dX1gGJIPu">youtube</a> from Luis Serrano</li>
+<li>What is ML <a href="https://youtu.be/IpGxLWOIZy4?si=SoLiRV7dX1gGJIPu">youtube</a> from Luis Serrano</li>
+<li><a href="../lectures/L00.html">Workflow</a> of an Model development</li>
+</ul>
+</section>
+<section id="in-class" class="level2">
+<h2 class="anchored" data-anchor-id="in-class">In-Class</h2>
+<ul>
+<li>Chapter 12 on Clustering from <a href="https://www.statlearning.com/">ISL</a></li>
+<li>Clustering documentation from <em>sklearn</em> <a href="https://scikit-learn.org/stable/modules/clustering.html">docs</a></li>
+</ul>
+</section>
+<section id="lab" class="level2">
+<h2 class="anchored" data-anchor-id="lab">Lab</h2>
+<ul>
+<li>k-Means clustering on simulated data <a href="../notebooks/03-01-Clust-Sim-Ch12-ISL.html">notebook</a> Chapter 12 of <a href="https://www.statlearning.com/">ISL</a></li>
+<li>k-Means clustering on real data <a href="./../notebooks03-01-Clust-Real-Ch12-ISL.ipynb">notebook</a> Chapter 12 of <a href="https://www.statlearning.com/">ISL</a></li>
+</ul>
+</section>
+<section id="post-class" class="level2">
+<h2 class="anchored" data-anchor-id="post-class">Post-class:</h2>
+<ul>
+<li>walk through this <a href="https://flothesof.github.io/k-means-numpy.html">code</a> on k-Means</li>
+<li><a href="https://www.jstatsoft.org/article/view/v025i04">clValid</a>: An R Package for Cluster Validation</li>
+<li><a href="https://erdogant.github.io/clusteval/pages/html/index.html">clusteval</a> for evaluating clusters using different metrics.</li>
 </ul>
 </section>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
-<p>Below outlined is a typical workflow to solve an ML problem (in a supervised setting) given the data and problem are already defined, that a Data Scientist solves. This is certainly a limited view of solving a business problem - where multiple skills are needed and framing a business problem as an ML problem and making the data available are challenges by themselves. Getting data, and building a model is only a part of the overall solution. Here we assume that Data Scientist is already given the problem and data on a platter.</p>
-<ol type="1">
-<li><strong>Profile raw data</strong>: This is often referred to as EDA (Exploratory Data Analysis). In this step, one wants to see if the data is useable, are there any issues with the data, does it need be cleaned, is there some signal in it w.r.t to the problem etc. Sometimes, EDA will help decide what problem to work on.</li>
-<li><strong>Frame the problem</strong>: Identify the type of the problem and what type of technique is suitable.</li>
-<li><strong>Prepare dataset</strong>: Identify what is the prediction variable, what will be the features, and what type of cleaning is necessary.</li>
-<li><strong>Identify the evaluation criteria</strong>: Define suitable metrics to evaluate the solution (model) and set aside some dataset to test.</li>
-<li><strong>Build a baseline model</strong>: It is like a good default.</li>
-<li><strong>Assess the model fit</strong>: Perform model assessment and run diagnostics to see the health of model at the instance level and at the dataset level.</li>
-<li><strong>Iterate</strong>: Go through any of the steps above to redefine or improve the models.</li>
-</ol>
-<p>If the solution is satisfactory, discuss the solution with ML Engineers and Product Owners on piloting and scaling.</p>
-<p>Often, in introductory courses on AI/ML Step 4 on building a model is given the attention (to introduce those models) but this is a partial view. For an overview of what all is needed to build ML solutions and to be valuable to organizations, read <a href="https://mlsquare.github.io/ai-839/preface.html">this</a> article on MLOps.</p>
+</section>
+<section id="advanced" class="level2">
+<h2 class="anchored" data-anchor-id="advanced">Advanced</h2>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://github.com/JWarmenhoven/ISLR-python">python notebooks</a> for Chapter 12 of <a href="https://www.statlearning.com/">ISL</a></li>
+<li><a href="https://www.statlearning.com/">An Introduction to Statistical Learning</a></li>
+</ul>
 
 
 </section>
@@ -693,13 +719,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../course.html" class="pagination-link" aria-label="Course">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Course</span></span>
+      <a href="../lectures/L02.html" class="pagination-link" aria-label="Logistic Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Logistic Regression</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lectures/L01.html" class="pagination-link" aria-label="Linear Regression">
-        <span class="nav-page-text">Linear Regression</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/01-01-Reg-LM-Sim.html" class="pagination-link" aria-label="Linear Regression:01">
+        <span class="nav-page-text"><span class="chapter-title">Linear Regression:01</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -711,7 +737,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2ai/edit/main/lectures/L00.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2ai/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2ai/edit/main/lectures/L03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2ai/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This course material was built with <a href="https://quarto.org/">Quarto</a> with <a href="https://github.com/hadley/r4ds">r4ds</a> theme.</p>
 </div>

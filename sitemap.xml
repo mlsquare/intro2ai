@@ -2,11 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mlsquare.github.io/intro2ai/notebooks/01-01-Reg-LM-Sim.html</loc>
-    <lastmod>2025-02-13T08:00:01.625Z</lastmod>
+    <lastmod>2025-02-15T08:15:55.193Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/notebooks/01-02-Reg-LM-Yield.html</loc>
+    <lastmod>2025-02-15T08:15:58.517Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/notebooks/02-01-Class-Logistic-Sim.html</loc>
+    <lastmod>2025-02-15T08:16:01.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/notebooks/02-02-Class-Logistic-Iris.html</loc>
+    <lastmod>2025-02-15T08:16:04.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/notebooks/03-01-Clust-Sim-Ch12-ISL.html</loc>
+    <lastmod>2025-02-15T08:15:42.887Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/notebooks/03-02-Clust-Real-Ch12-ISL.html</loc>
+    <lastmod>2025-02-15T08:52:40.617Z</lastmod>
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2ai/index.html</loc>
-    <lastmod>2025-02-13T08:00:01.648Z</lastmod>
+    <lastmod>2025-02-15T08:54:22.982Z</lastmod>
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2ai/preface.html</loc>
@@ -14,7 +34,7 @@
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2ai/course.html</loc>
-    <lastmod>2025-02-13T08:00:01.617Z</lastmod>
+    <lastmod>2025-02-15T08:53:00.318Z</lastmod>
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2ai/lectures/L00.html</loc>
@@ -22,6 +42,14 @@
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2ai/lectures/L01.html</loc>
-    <lastmod>2025-02-13T08:00:01.625Z</lastmod>
+    <lastmod>2025-02-15T07:23:23.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/lectures/L02.html</loc>
+    <lastmod>2025-02-15T07:23:30.210Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2ai/lectures/L03.html</loc>
+    <lastmod>2025-02-15T08:39:08.933Z</lastmod>
   </url>
 </urlset>
