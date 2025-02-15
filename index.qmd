@@ -6,7 +6,8 @@ See the [course](./course.qmd) page for recent information on Lectures, Labs, Re
 
 ## Announcements
 
--   \[11-Feb-2025\] Course website up
+-   [15-Feb-2025] Added notes on Linear Regression, Logistic Regression, Clustering (wip)
+-   [11-Feb-2025] Course website up
 
 ## Overview
 
@@ -21,7 +22,7 @@ We will take a case-based approach to learning the following topics
 
 -   Linear Regression
 -   Logistic Regression
--   k Nearest Neighbors (Regression and Classification)   
+-   k Nearest Neighbors (Regression and Classification)\
 -   Decision Trees
 -   Random Foresting (Bagging)
 -   Gradient Boosting Trees (Boosting)
@@ -29,18 +30,18 @@ We will take a case-based approach to learning the following topics
 **Part-2: Unsupervised Learning**
 
 -   Clustering
-    - K-Means
+    -   K-Means
 -   Dimensionality Regression
-    - PCA
+    -   PCA
 
 **Part-3: Semisupervised Learning**
 
 -   Clustering
-    - K-Means
+    -   K-Means
 -   Dimensionality Regression
-    - PCA
+    -   PCA
 
 **Part-4: Reinforcement Learning**
 
 -   Setup
-    - Q-Learning
+    -   Q-Learning
