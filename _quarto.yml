@@ -11,8 +11,8 @@ navbar:
       - text: "Preface"
         href: preface.qmd
 book:
-  title: "Deep Learning"
-  subtitle: "A Mathematical Introduction"
+  title: "Introduction to AI"
+  subtitle: "A case-based approach"
   reader-mode: true
 
   page-footer:
@@ -23,34 +23,30 @@ book:
   
   cover-image: logo.jpg
   favicon: logo.jpg
-  site-url: https://mlsquare.github.io/intro2dl
-  repo-url: https://github.com/mlsquare/intro2dl
+  site-url: https://mlsquare.github.io/intro2ai
+  repo-url: https://github.com/mlsquare/intro2ai
   repo-branch: main
   repo-actions: [edit, issue]
   
   chapters:
-  - preface.qmd
-  - index.qmd
-  - course.qmd        
-  - part: Lectures
-    chapters:
-    - ./lectures/L01.qmd
-    - ./lectures/L02.qmd
-    - ./lectures/L03.qmd
-    - ./lectures/L04.qmd
-    - ./lectures/L05.qmd
-    - ./lectures/L06.qmd
-  - part: Lab
-    chapters:
-    - ./notebooks/00-01-FFN-Classification-Iris.ipynb
-    - ./notebooks/00-02-FFN-Regression-Friedman2.ipynb
-    - ./notebooks/02-01-KAN-Intro.ipynb
-    - ./notebooks/02-02-KAN-Splines.ipynb
-    - ./notebooks/02-03-KAN-RBFs.ipynb
-    - ./notebooks/02-04-KAN-Chebyshev.ipynb
-    - ./notebooks/02-05-KAN-Wavelets.ipynb
-    - ./notebooks/02-07-KAN-PDE.ipynb
-  
+    - preface.qmd
+    - index.qmd
+    - course.qmd        
+    - part: Lectures
+      chapters:
+        - ./lectures/L00.qmd
+        - ./lectures/L01.qmd
+        - ./lectures/L02.qmd
+        - ./lectures/L03.qmd
+    - part: Lab
+      chapters:
+        - ./notebooks/01-01-Reg-LM-Sim.ipynb
+        - ./notebooks/01-02-Reg-LM-Yield.ipynb
+        - ./notebooks/02-01-Class-Logistic-Sim.ipynb
+        - ./notebooks/02-02-Class-Logistic-Iris.ipynb
+        - ./notebooks/03-01-Clust-Sim-Ch12-ISL.ipynb
+        - ./notebooks/03-02-Clust-Real-Ch12-ISL.ipynb
+    
   
 format:
   html:

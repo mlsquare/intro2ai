@@ -1,0 +1,29 @@
+# Clustering {.unnumbered}
+
+
+## Pre-work:
+
+- What is ML [youtube](https://youtu.be/IpGxLWOIZy4?si=SoLiRV7dX1gGJIPu) from Luis Serrano
+- [Workflow](L00.qmd) of an Model development   
+
+## In-Class
+
+- Chapter 12 on Clustering from [ISL](https://www.statlearning.com/) 
+- Clustering documentation from _sklearn_ [docs](https://scikit-learn.org/stable/modules/clustering.html)
+
+## Lab
+- k-Means clustering on simulated data [notebook](./../notebooks/03-01-Clust-Sim-Ch12-ISL.ipynb) Chapter 12 of [ISL](https://www.statlearning.com/)
+- k-Means clustering on real data [notebook](./../notebooks03-01-Clust-Real-Ch12-ISL.ipynb) Chapter 12 of [ISL](https://www.statlearning.com/)
+
+
+## Post-class:
+
+- walk through this [code](https://flothesof.github.io/k-means-numpy.html) on k-Means
+
+## Notes
+
+## Advanced
+
+## References
+- [python notebooks](https://github.com/JWarmenhoven/ISLR-python) for Chapter 12 of [ISL](https://www.statlearning.com/)
+- [An Introduction to Statistical Learning](https://www.statlearning.com/) 

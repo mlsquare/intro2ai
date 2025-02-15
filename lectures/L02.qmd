@@ -1,0 +1,29 @@
+# Logistic Regression {.unnumbered}
+
+
+## Pre-work:
+
+- What is ML [youtube](https://youtu.be/IpGxLWOIZy4?si=SoLiRV7dX1gGJIPu) from Luis Serrano
+- [Workflow](L00.qmd) of an Model development   
+- [Linear Regression](L01.qmd)
+
+## In-Class
+
+- Chapter 04 on Classification from [An Introduction to Statistical Learning](https://www.statlearning.com/) 
+- Supervised Learning with _sklearn_ [docs](https://scikit-learn.org/stable/supervised_learning.html)
+
+
+## Lab
+
+- Logistic Regression on simulated data [notebook](./../notebooks/02-01-Class-Logistic-Sim.ipynb)
+- Logistic Regression on Iris data [notebook](./../notebooks/02-02-Class-Logistic-Iris.ipynb)
+
+
+
+## Post-class:
+
+## Notes
+
+## Advanced
+
+## References

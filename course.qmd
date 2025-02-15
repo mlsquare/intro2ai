@@ -11,8 +11,10 @@ Note: I use AI/ML/Statistics interchangeably.
 ::: {style="font-size: 80%;"}
 | \#  | Topics                     | Resources                 |     |
 |:----|:---------------------------|:--------------------------|:----|
-| 01  | Intro to Linear Regression | [L01](./lectures/L01.qmd) |     |
-| 02  | tbd                        | tbd                       |     |
+| 01  | ML Workflow | [L01](./lectures/L00.qmd) |     |
+| 02  | Linear Regression | [L01](./lectures/L01.qmd) |     |
+| 03  | Logistic Regression | [L02](./lectures/L02.qmd) |     |
+| 04  | Clustering | [L03](./lectures/L03.qmd) |     |
 
 : Part-1: Supervised Learning {.striped}
 :::
