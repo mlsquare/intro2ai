@@ -38,14 +38,15 @@ book:
         - ./lectures/L01.qmd
         - ./lectures/L02.qmd
         - ./lectures/L03.qmd
+        - ./lectures/L05.qmd
     - part: Lab
       chapters:
         - ./notebooks/01-01-Reg-LM-Sim.ipynb
-        - ./notebooks/01-02-Reg-LM-Yield.ipynb
         - ./notebooks/02-01-Class-Logistic-Sim.ipynb
         - ./notebooks/02-02-Class-Logistic-Iris.ipynb
         - ./notebooks/03-01-Clust-Sim-Ch12-ISL.ipynb
         - ./notebooks/03-02-Clust-Real-Ch12-ISL.ipynb
+        - ./notebooks/05-01-Perceptron-Class-Iris.ipynb
     
   
 format:

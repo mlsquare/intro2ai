@@ -15,6 +15,7 @@ Note: I use AI/ML/Statistics interchangeably.
 | 02  | Linear Regression | [L01](./lectures/L01.qmd) |     |
 | 03  | Logistic Regression | [L02](./lectures/L02.qmd) |     |
 | 04  | Clustering | [L03](./lectures/L03.qmd) |     |
+| 05  | Perceptron | [L05](./lectures/L05.qmd) |     |
 
 : Part-1: Supervised Learning {.striped}
 :::
