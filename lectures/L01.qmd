@@ -15,7 +15,7 @@
 ## Lab
 
 - Linear Regression on simulated data [notebook](./../notebooks/01-01-Reg-LM-Sim.ipynb)simulated data
-- Linear Regression on Yield data [notebook](./../notebooks/01-01-Reg-LM-Sim.ipynb)
+- Linear Regression on Yield data. Check [this](https://www.kaggle.com/code/romannihal/crop-yield-prediction) notebook on Kaggle
 
 
 
@@ -56,3 +56,6 @@ The prediction ${\bf \hat{y}}$ is typically the conditional expectation ${\bf \h
 ## Advanced
 
 ## References
+- [python notebooks](https://github.com/JWarmenhoven/ISLR-python) for Chapter 12 of [ISL](https://www.statlearning.com/)
+- [An Introduction to Statistical Learning](https://www.statlearning.com/) 
+

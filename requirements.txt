@@ -22,3 +22,9 @@ great-expectations==1.0.0
 evidently==0.4.36
 torch==2.4.1
 torchinfo==1.8.0
+ucimlrepo==0.0.7
+clusteval=2.2.4
+colourmap=1.1.19
+datazets=1.1.0
+pypickle=1.1.0
+scatterd=1.3.7

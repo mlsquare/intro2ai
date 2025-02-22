@@ -11,14 +11,19 @@
 - Chapter 12 on Clustering from [ISL](https://www.statlearning.com/) 
 - Clustering documentation from _sklearn_ [docs](https://scikit-learn.org/stable/modules/clustering.html)
 
+
 ## Lab
 - k-Means clustering on simulated data [notebook](./../notebooks/03-01-Clust-Sim-Ch12-ISL.ipynb) Chapter 12 of [ISL](https://www.statlearning.com/)
 - k-Means clustering on real data [notebook](./../notebooks03-01-Clust-Real-Ch12-ISL.ipynb) Chapter 12 of [ISL](https://www.statlearning.com/)
-
+- k-Means assumptions [here](https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html#sphx-glr-auto-examples-cluster-plot-kmeans-assumptions-py) from _sklearn_ documentation
+- Finding the number of clusters based on Silhouette analysis - check [this](https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html#sphx-glr-auto-examples-cluster-plot-kmeans-silhouette-analysis-py) from _sklearn_ documentation
 
 ## Post-class:
 
 - walk through this [code](https://flothesof.github.io/k-means-numpy.html) on k-Means
+- [clValid](https://www.jstatsoft.org/article/view/v025i04): An R Package for Cluster Validation
+- [clusteval](https://erdogant.github.io/clusteval/pages/html/index.html) for evaluating clusters using different metrics.
+- [clustimage](https://erdogant.github.io/clustimage/pages/html/index.html) - a python library for clustering images
 
 ## Notes
 
